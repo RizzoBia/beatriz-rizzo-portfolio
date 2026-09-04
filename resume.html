@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beatriz Tomei Rizzo - Resume</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #475569;
+      --accent-color: #2563eb;
+      --text-color: #334155;
+      --border-color: #e2e8f0;
+      --sidebar-bg: #f8fafc;
+      --badge-bg: #f1f5f9;
+      --badge-text: #334155;
+
+      --spacing-sm: 6px;
+      --spacing-md: 12px;
+      --spacing-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #cbd5e1;
+      color: var(--text-color);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .edit-banner {
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 12px 20px;
+      width: 210mm;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .edit-banner button {
+      background-color: #166534;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12.5px;
+      transition: background-color 0.2s;
+    }
+
+    .edit-banner button:hover {
+      background-color: #14532d;
+    }
+
+    .resume-pages-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      outline: none;
+    }
+
+    .page {
+      background-color: #ffffff;
+      width: 210mm;
+      height: 297mm;
+      padding: 15mm 15mm;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      position: relative;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 24px;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--border-color);
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+
+    header {
+      grid-column: 1 / -1;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: var(--spacing-md);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .header-left .subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    .header-left .sub-headline {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--secondary-color);
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--secondary-color);
+      align-items: flex-end;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .contact-item svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--secondary-color);
+    }
+
+    .contact-info a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent-color);
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid var(--primary-color);
+      padding-bottom: 4px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .sidebar .section-title {
+      border-bottom: 1.5px solid var(--border-color);
+      padding-bottom: 4px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .profile-text {
+      font-size: 12.5px;
+      color: var(--text-color);
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .experience-item {
+      margin-bottom: 4px;
+    }
+
+    .experience-header {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+
+    .role-company {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .role-company span {
+      font-weight: 500;
+      color: var(--accent-color);
+    }
+
+    .date-location {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--secondary-color);
+      text-align: left;
+    }
+
+    .experience-bullets {
+      list-style-type: none;
+    }
+
+    .experience-bullets li {
+      font-size: 12px;
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 5px;
+      color: var(--text-color);
+      text-align: justify;
+    }
+
+    .experience-bullets li::before {
+      content: "▪";
+      color: var(--accent-color);
+      font-size: 9px;
+      position: absolute;
+      left: 0;
+      top: 0.5px;
+    }
+
+    .experience-bullets li strong {
+      color: var(--primary-color);
+    }
+
+    .project-item {
+      margin-bottom: 12px;
+    }
+
+    .project-header {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .project-tech {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--text-color);
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+
+    .project-bullets {
+      list-style-type: none;
+    }
+
+    .project-bullets li {
+      font-size: 12px;
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 4px;
+      color: var(--text-color);
+    }
+
+    .project-bullets li::before {
+      content: "▪";
+      color: var(--accent-color);
+      font-size: 9px;
+      position: absolute;
+      left: 0;
+      top: 0.5px;
+    }
+
+    .education-item {
+      margin-bottom: 12px;
+    }
+
+    .education-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+      line-height: 1.3;
+    }
+
+    .education-subtitle {
+      font-size: 12px;
+      color: var(--secondary-color);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .education-date {
+      font-size: 11px;
+      color: var(--secondary-color);
+      margin-top: 1px;
+    }
+
+    .cert-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cert-list li {
+      font-size: 12px;
+      position: relative;
+      padding-left: 12px;
+      line-height: 1.3;
+    }
+
+    .cert-list li::before {
+      content: "▪";
+      color: var(--accent-color);
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    .skills-category {
+      margin-bottom: 14px;
+    }
+
+    .skills-category-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .skill-tag {
+      font-size: 10.5px;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+    }
+
+    .languages-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-item {
+      font-size: 12px;
+    }
+
+    .language-item strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .language-item span {
+      color: var(--secondary-color);
+    }
+
+    @media print {
+      body {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .edit-banner {
+        display: none !important;
+      }
+
+      .resume-pages-container {
+        gap: 0;
+      }
+
+      .page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+        page-break-after: always;
+        page-break-inside: avoid;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="edit-banner">
+    <span>✍️ <strong>Edit Mode Active:</strong> Feel free to adjust the text and save!</span>
+    <button onclick="window.print()">Save as PDF (Ctrl + P)</button>
+  </div>
+
+  <div class="resume-pages-container" contenteditable="true" spellcheck="false">
+
+    <!-- PAGE 1 -->
+    <div class="page" id="page-1">
+      <header>
+        <div class="header-left">
+          <h1>Beatriz Tomei Rizzo</h1>
+          <div class="subtitle">Software Developer | Data Engineer</div>
+          <div class="sub-headline">Python • SQL • C# • FastAPI • PostgreSQL</div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>São João da Boa Vista, SP, Brazil</span>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <a href="mailto:beatriztrizzo@gmail.com">beatriztrizzo@gmail.com</a>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <span>+55 (19) 99690-0426</span>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <a href="https://www.linkedin.com/in/beatriz-tomei-rizzo/"
+              target="_blank">linkedin.com/in/beatriz-tomei-rizzo</a>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <a href="https://beatriz-rizzo.vercel.app/" target="_blank">beatriz-rizzo.vercel.app</a>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="sidebar">
+        <div>
+          <div class="section-title">Skills</div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Languages</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Databases</div>
+            <div class="skills-tags">
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">Supabase</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Data Engineering</div>
+            <div class="skills-tags">
+              <span class="skill-tag">ETL / ELT</span>
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Systems Integration</span>
+              <span class="skill-tag">Data Modeling</span>
+              <span class="skill-tag">Regex</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Development</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">React</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Methodologies</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Kanban</span>
+              <span class="skill-tag">Agile Methodologies</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Languages</div>
+          <div class="languages-list">
+            <div class="language-item"><strong>English</strong> <span>– Fluent/Native</span></div>
+            <div class="language-item"><strong>Spanish</strong> <span>– Advanced</span></div>
+            <div class="language-item"><strong>German</strong> <span>– Basic</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <section>
+          <div class="section-title">Professional Profile</div>
+          <p class="profile-text">
+            Software Developer and Data Engineer with a strong background in backend development, process automation, and business intelligence. Experienced in building and orchestrating data pipelines (ETL), relational database modeling (PostgreSQL, SQL Server), and developing high-performance REST APIs using Python (FastAPI) and C# (.NET Core). Focused on delivering scalable, data-driven solutions.
+          </p>
+        </section>
+
+        <section>
+          <div class="section-title">Projects</div>
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">DEDO DURO 2.0 – Multichannel Sellout Platform</div>
+              <div class="project-tech">Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex</div>
+            </div>
+            <p class="project-desc">
+              A commercial intelligence platform responsible for consolidating, normalizing, and analyzing sales, inventory, and restocking data from marketplaces such as Mercado Livre, Amazon, Shopee, and Magalu.
+            </p>
+            <div style="font-size: 12px; font-weight: 700; color: var(--primary-color); margin-top: 6px; margin-bottom: 4px;">
+              Results:</div>
+            <ul class="project-bullets">
+              <li>Consolidated over <strong>100,000 historical records</strong>.</li>
+              <li>Normalized over <strong>15,000 SKUs/products</strong>.</li>
+              <li>Automated the tracking of sales, inventory, and restocking.</li>
+              <li>Centralized data from multiple marketplaces into a single source of truth.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Professional Experience</div>
+          <div class="experience-list">
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Data Engineer <span>| Grupo Sandrini</span></div>
+                <div class="date-location">02/2026 – Present • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>System Architecture:</strong> Designed and developed a full-stack intelligent system for automated inventory management and reconciliation, utilizing Node.js, React, and Supabase.</li>
+                <li><strong>Data Pipelines (ETL):</strong> Developed and orchestrated automated daily routines using Python and Pandas to extract, clean, and process cloud sales spreadsheets.</li>
+                <li><strong>APIs & Integration:</strong> Created high-performance REST APIs with Python (FastAPI) to consume, normalize, and integrate multiple external data sources and legacy systems.</li>
+                <li><strong>Data Modeling:</strong> Structured the analytical data repository applying the Medallion Architecture (Staging, Silver, Gold) in a PostgreSQL database.</li>
+                <li><strong>Data Visualization:</strong> Developed interactive dashboards in Power BI and Streamlit for real-time monitoring of critical business KPIs, such as sellout and sales coverage.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page" id="page-2">
+      <div class="sidebar">
+        <div>
+          <div class="section-title">Education</div>
+          <div class="education-item">
+            <div class="education-title">Degree in Systems Analysis and Development</div>
+            <div class="education-subtitle">Universidade Anhembi Morumbi</div>
+            <div class="education-date">02/2024 – 07/2026 • São Paulo, SP (Remote)</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Certifications & Courses</div>
+          <ul class="cert-list">
+            <li>Prompt Engineering for Software Eng. – USP ESALQ (2026)</li>
+            <li>Introduction to Machine Learning with Python – USP ESALQ (2026)</li>
+            <li>Python AI Backend Developer – DIO / Vivo</li>
+            <li>Bootcamp 2024: AWS Trail – DIO / Santander</li>
+            <li>AWS Academy Cloud Foundation – AWS</li>
+            <li>Data Analyst in Power BI – Datacamp</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="section-title">Additional Technologies</div>
+          <div class="skills-tags">
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">Tailwind</span>
+            <span class="skill-tag">DAX</span>
+            <span class="skill-tag">Power Query</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <section>
+          <div class="section-title">Professional Experience (Cont.)</div>
+          <div class="experience-list">
+
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Full Stack Developer <span>| Simpliss Sistemas de Informação</span></div>
+                <div class="date-location">01/2025 – 02/2026 • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>APIs & Microservices:</strong> Developed, maintained, and refactored high-performance APIs and microservices using C#, .NET Core, and ASP.NET Core.</li>
+                <li><strong>Database Engineering:</strong> Modeled databases and created procedures, functions, and complex queries to process large volumes of data in SQL Server and PostgreSQL.</li>
+                <li><strong>Systems Integration:</strong> Built secure and scalable integrations between legacy systems and new cloud-hosted applications.</li>
+                <li><strong>Business Intelligence:</strong> Developed BI solutions connecting transactional databases to Power BI, utilizing advanced DAX for financial calculations and dataset automation.</li>
+              </ul>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Web Developer (Freelance) <span>| HubControl</span></div>
+                <div class="date-location">09/2024 – 12/2024 • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>Web Development:</strong> Created and maintained responsive web systems and administrative panels using PHP, JavaScript, HTML5/CSS3, and Bootstrap.</li>
+                <li><strong>System Integration:</strong> Integrated front-end interfaces with business logic and rules on the back-end using PHP.</li>
+                <li><strong>Databases:</strong> Modeled, manipulated, and processed information within relational (MySQL) and non-relational/NoSQL (MongoDB) database architectures.</li>
+              </ul>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Junior Data Analyst <span>| Relume Iluminação</span></div>
+                <div class="date-location">07/2023 – 09/2023 • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>Data Analysis (BI):</strong> Developed and maintained strategic reports and dashboards in Power BI, providing fundamental data intelligence to support executive decision-making.</li>
+                <li><strong>Process Automation:</strong> Automated financial reports and administrative routines, optimizing internal processes and significantly reducing information delivery time.</li>
+                <li><strong>Web Development:</strong> Created and continuously maintained the company's institutional website, ensuring advanced usability (UX), accessibility, and high availability.</li>
+                <li><strong>IT Support & Infrastructure:</strong> Provided direct technical support, configuring and maintaining hardware and networks to ensure company infrastructure stability.</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beatriz Tomei Rizzo - Currículo</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      /* Slate 900 */
+      --secondary-color: #475569;
+      /* Slate 600 */
+      --accent-color: #2563eb;
+      /* Blue 600 */
+      --text-color: #334155;
+      /* Slate 700 */
+      --border-color: #e2e8f0;
+      /* Slate 200 */
+      --sidebar-bg: #f8fafc;
+      /* Slate 50 */
+      --badge-bg: #f1f5f9;
+      /* Slate 100 */
+      --badge-text: #334155;
+      /* Slate 700 */
+
+      --spacing-sm: 6px;
+      --spacing-md: 12px;
+      --spacing-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #cbd5e1;
+      /* Gray slate for backdrop */
+      color: var(--text-color);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Floating Editor Banner */
+    .edit-banner {
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 12px 20px;
+      width: 210mm;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .edit-banner button {
+      background-color: #166534;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12.5px;
+      transition: background-color 0.2s;
+    }
+
+    .edit-banner button:hover {
+      background-color: #14532d;
+    }
+
+    .resume-pages-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      outline: none;
+    }
+
+    /* Page Setup */
+    .page {
+      background-color: #ffffff;
+      width: 210mm;
+      height: 297mm;
+      padding: 15mm 15mm;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      position: relative;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 24px;
+      overflow: hidden;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      border-right: 1px solid var(--border-color);
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+
+    /* Right Column */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+
+    /* Header spans both columns on Page 1 */
+    header {
+      grid-column: 1 / -1;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: var(--spacing-md);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .header-left .subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    .header-left .sub-headline {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--secondary-color);
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--secondary-color);
+      align-items: flex-end;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .contact-item svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--secondary-color);
+    }
+
+    .contact-info a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid var(--primary-color);
+      padding-bottom: 4px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .sidebar .section-title {
+      border-bottom: 1.5px solid var(--border-color);
+      padding-bottom: 4px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    /* Profile text */
+    .profile-text {
+      font-size: 12.5px;
+      color: var(--text-color);
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    /* Experience */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .experience-item {
+      margin-bottom: 4px;
+    }
+
+    .experience-header {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+
+    .role-company {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .role-company span {
+      font-weight: 500;
+      color: var(--accent-color);
+    }
+
+    .date-location {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--secondary-color);
+      text-align: left;
+    }
+
+    .experience-bullets {
+      list-style-type: none;
+    }
+
+    .experience-bullets li {
+      font-size: 12px;
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 5px;
+      color: var(--text-color);
+      text-align: justify;
+    }
+
+    .experience-bullets li::before {
+      content: "▪";
+      color: var(--accent-color);
+      font-size: 9px;
+      position: absolute;
+      left: 0;
+      top: 0.5px;
+    }
+
+    .experience-bullets li strong {
+      color: var(--primary-color);
+    }
+
+    /* Project styling */
+    .project-item {
+      margin-bottom: 12px;
+    }
+
+    .project-header {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .project-tech {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--text-color);
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+
+    .project-bullets {
+      list-style-type: none;
+    }
+
+    .project-bullets li {
+      font-size: 12px;
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 4px;
+      color: var(--text-color);
+    }
+
+    .project-bullets li::before {
+      content: "▪";
+      color: var(--accent-color);
+      font-size: 9px;
+      position: absolute;
+      left: 0;
+      top: 0.5px;
+    }
+
+    /* Education */
+    .education-item {
+      margin-bottom: 12px;
+    }
+
+    .education-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+      line-height: 1.3;
+    }
+
+    .education-subtitle {
+      font-size: 12px;
+      color: var(--secondary-color);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .education-date {
+      font-size: 11px;
+      color: var(--secondary-color);
+      margin-top: 1px;
+    }
+
+    /* Certifications */
+    .cert-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cert-list li {
+      font-size: 12px;
+      position: relative;
+      padding-left: 12px;
+      line-height: 1.3;
+    }
+
+    .cert-list li::before {
+      content: "▪";
+      color: var(--accent-color);
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    /* Skills block */
+    .skills-category {
+      margin-bottom: 14px;
+    }
+
+    .skills-category-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .skill-tag {
+      font-size: 10.5px;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Languages */
+    .languages-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .language-item {
+      font-size: 12px;
+    }
+
+    .language-item strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .language-item span {
+      color: var(--secondary-color);
+    }
+
+    /* Print Optimization styles */
+    @media print {
+      body {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .edit-banner {
+        display: none !important;
+      }
+
+      .resume-pages-container {
+        gap: 0;
+      }
+
+      .page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+        page-break-after: always;
+        page-break-inside: avoid;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Editor Banner -->
+  <div class="edit-banner">
+    <span>✍️ <strong>Modo de Edição Ativo:</strong> Sinta-se livre para ajustar o texto e depois salvar!</span>
+    <button onclick="window.print()">Salvar como PDF (Ctrl + P)</button>
+  </div>
+
+  <div class="resume-pages-container" contenteditable="true" spellcheck="false">
+
+    <!-- PAGE 1 -->
+    <div class="page" id="page-1">
+      <!-- Header spans both columns -->
+      <header>
+        <div class="header-left">
+          <h1>Beatriz Tomei Rizzo</h1>
+          <div class="subtitle">Desenvolvedora de Software | Engenharia de Dados</div>
+          <div class="sub-headline">Python • SQL • C# • FastAPI • PostgreSQL</div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>São João da Boa Vista, SP</span>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <a href="mailto:beatriztrizzo@gmail.com">beatriztrizzo@gmail.com</a>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <span>(19) 99690-0426</span>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+          </div>
+          <div class="contact-item">
+            <a href="https://www.linkedin.com/in/beatriz-tomei-rizzo/"
+              target="_blank">linkedin.com/in/beatriz-tomei-rizzo</a>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+          </div>
+
+          <div class="contact-item">
+            <a href="https://beatriz-rizzo.vercel.app/" target="_blank">beatriz-rizzo.vercel.app</a>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar Page 1 -->
+      <div class="sidebar">
+        <!-- Competências -->
+        <div>
+          <div class="section-title">Competências</div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Linguagens</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Banco de Dados</div>
+            <div class="skills-tags">
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">SQL Server</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">Supabase</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Engenharia de Dados</div>
+            <div class="skills-tags">
+              <span class="skill-tag">ETL / ELT</span>
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">APIs REST</span>
+              <span class="skill-tag">Integração de Sistemas</span>
+              <span class="skill-tag">Modelagem de Dados</span>
+              <span class="skill-tag">Regex</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Desenvolvimento</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">React</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Metodologias</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Kanban</span>
+              <span class="skill-tag">Metodologias Ágeis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Idiomas -->
+        <div>
+          <div class="section-title">Idiomas</div>
+          <div class="languages-list">
+            <div class="language-item"><strong>Inglês</strong> <span>– Avançado</span></div>
+            <div class="language-item"><strong>Espanhol</strong> <span>– Intermediário</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Column Page 1 -->
+      <div class="main-content">
+        <!-- Perfil Profissional -->
+        <section>
+          <div class="section-title">Perfil Profissional</div>
+          <p class="profile-text">
+            Desenvolvedora de Software com experiência em desenvolvimento de APIs, integração de sistemas, automação de
+            processos e engenharia de dados. Atuação em construção de pipelines ETL, modelagem de bancos de dados e
+            desenvolvimento de soluções orientadas a dados utilizando Python, SQL, C# e FastAPI.
+          </p>
+        </section>
+
+        <!-- Projetos -->
+        <section>
+          <div class="section-title">Projetos</div>
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">DEDO DURO 2.0 – Plataforma de Sellout Multicanal</div>
+              <div class="project-tech">Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex</div>
+            </div>
+            <p class="project-desc">
+              Plataforma de inteligência comercial responsável pela consolidação, normalização e análise de dados de
+              vendas, estoque e reposição de marketplaces como Mercado Livre, Amazon, Shopee e Magalu.
+            </p>
+            <div
+              style="font-size: 12px; font-weight: 700; color: var(--primary-color); margin-top: 6px; margin-bottom: 4px;">
+              Resultados:</div>
+            <ul class="project-bullets">
+              <li>Consolidação de mais de <strong>100.000 registros históricos</strong>.</li>
+              <li>Normalização de mais de <strong>15.000 SKUs/produtos</strong>.</li>
+              <li>Automatização do acompanhamento de vendas, estoque e reposição.</li>
+              <li>Centralização de dados de múltiplos marketplaces.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Experiência 1 -->
+        <section>
+          <div class="section-title">Experiência Profissional</div>
+          <div class="experience-list">
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Desenvolvedora de Software / Engenharia de Dados <span>| Grupo Sandrini</span>
+                </div>
+                <div class="date-location">02/2026 – Atual • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>APIs & ETL</strong>: Construção de pipelines com Python (Pandas/FastAPI) e PostgreSQL
+                  (Supabase).</li>
+                <li><strong>Integração & Parser</strong>: Conexão com APIs de marketplaces (Mercado Livre) e
+                  normalização de SKUs via Regex.</li>
+                <li><strong>Modelagem de Dados</strong>: Arquitetura Medalhão (Bronze/Silver), views e índices para
+                  otimização de consultas.</li>
+                <li><strong>Dashboards</strong>: Desenvolvimento em React e Streamlit para visualização de sellout e
+                  faturamento.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page" id="page-2">
+      <!-- Sidebar Page 2 -->
+      <div class="sidebar">
+        <!-- Educação -->
+        <div>
+          <div class="section-title">Educação</div>
+          <div class="education-item">
+            <div class="education-title">Graduação em Análise e Desenvolvimento de Sistemas</div>
+            <div class="education-subtitle">Universidade Anhembi Morumbi</div>
+            <div class="education-date">02/2024 – 07/2026 • São Paulo, SP (Remoto)</div>
+          </div>
+        </div>
+
+        <!-- Certificações -->
+        <div>
+          <div class="section-title">Certificações e Cursos</div>
+          <ul class="cert-list">
+            <li>Engenharia de Prompt para Eng. de Software – USP ESALQ (2026)</li>
+            <li>Introdução ao Machine Learning com Python – USP ESALQ (2026)</li>
+            <li>Python AI Backend Developer – DIO / Vivo</li>
+            <li>Bootcamp 2024: Trilha AWS – DIO / Santander</li>
+            <li>AWS Academy Cloud Foundation – AWS</li>
+            <li>Analista de Dados no Power BI – Datacamp</li>
+          </ul>
+        </div>
+
+        <!-- Conhecimentos Complementares -->
+        <div>
+          <div class="section-title">Tecnologias Complementares</div>
+          <div class="skills-tags">
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">Tailwind</span>
+            <span class="skill-tag">DAX</span>
+            <span class="skill-tag">Power Query</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Column Page 2 -->
+      <div class="main-content">
+        <!-- Experiências Restantes -->
+        <section>
+          <div class="section-title">Experiência Profissional (Cont.)</div>
+          <div class="experience-list">
+
+            <!-- Experiência 2 -->
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Desenvolvedora Full Stack <span>| Simpliss Sistemas de Informação</span></div>
+                <div class="date-location">02/2025 – 02/2026 • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>Desenvolvimento C#</strong>: APIs REST corporativas usando .NET Core e ASP.NET Core.</li>
+                <li><strong>Banco de Dados & Segurança</strong>: Integrações com SQL Server/PostgreSQL e segurança a
+                  nível de linha (RLS).</li>
+                <li><strong>Sustentação</strong>: Depuração de logs e refatoração de código legado para melhoria de
+                  estabilidade.</li>
+                <li><strong>Metodologia</strong>: Gestão e priorização de tarefas em fluxo de trabalho Kanban.</li>
+              </ul>
+            </div>
+
+            <!-- Experiência 3 -->
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Desenvolvedora Full Stack (Freelance) <span>| HubControl</span></div>
+                <div class="date-location">09/2024 – 12/2024 • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>Web Frontend/Backend</strong>: Desenvolvimento de páginas responsivas em PHP, JavaScript,
+                  Bootstrap e jQuery.</li>
+                <li><strong>Persistência</strong>: Manipulação e consultas em bancos relacionais e não-relacionais
+                  (MySQL e MongoDB).</li>
+              </ul>
+            </div>
+
+            <!-- Experiência 4 -->
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Auxiliar Administrativo (Foco em Dados) <span>| Relume Iluminação</span></div>
+                <div class="date-location">07/2023 – 09/2024 • São João da Boa Vista, SP</div>
+              </div>
+              <ul class="experience-bullets">
+                <li><strong>BI & Analytics</strong>: Relatórios de faturamento e dashboards comerciais com Power BI e
+                  Excel.</li>
+                <li><strong>Auditoria de Estoque</strong>: Conciliação de inventário físico e digital em sistemas ERP.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Beatriz Tomei Rizzo - Desenvolvedora de Software & Engenharia de Dados.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Beatriz Tomei Rizzo | Desenvolvedora de Software & Engenharia de Dados">
+    <meta property="og:description" content="Desenvolvedora com experiência em Engenharia de Dados e construção de APIs.">
+    <meta property="og:type" content="website">
+    
+    <title>Beatriz Tomei Rizzo | Desenvolvedora de Software & Engenharia de Dados</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Elements for Premium Feel -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-bracket">&lt;</span>BTR<span class="logo-bracket">/&gt;</span>
+            </a>
+            
+            <nav class="nav" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">Sobre</a></li>
+                    <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                    <li><a href="#projects" class="nav-link">Projetos</a></li>
+                    <li><a href="#experience" class="nav-link">Experiência</a></li>
+                    <li><a href="#education" class="nav-link">Formação</a></li>
+                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://github.com/RizzoBia" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/beatriz-tomei-rizzo/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu de Navegação">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="container hero-container reveal-on-scroll">
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fa-solid fa-bolt"></i> Disponível para projetos</span>
+                    <h1 class="hero-title">
+                        Olá, me chamo <br>
+                        <span class="highlight-text">Beatriz Tomei Rizzo</span>
+                    </h1>
+                    <h2 class="hero-subtitle">Desenvolvedora de Software & Engenharia de Dados</h2>
+                    <div class="hero-tech-line">
+                        <span>Python</span> • <span>FastAPI</span> • <span>C#/.NET</span> • <span>PostgreSQL</span> • <span>SQL Server</span> • <span>React</span> • <span>Power BI</span>
+                    </div>
+                    <p class="hero-description">
+                        Desenvolvo sistemas corporativos, APIs robustas e pipelines de dados que conectam operações, bancos de dados e indicadores de negócio. Atuo desde o processamento e consolidação dos dados até a construção de aplicações e dashboards analíticos para transformar informações brutas em decisões estratégicas.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">Ver Projetos <i class="fa-solid fa-arrow-down-long"></i></a>
+                        <a href="#contact" class="btn btn-secondary">Entrar em contato</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <!-- Abstract Tech Composition instead of floating isolated cards -->
+                    <div class="hero-tech-composition">
+                        <svg class="tech-connections" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Line to Python (Node 1) -->
+                        <line x1="74" y1="74" x2="250" y2="250" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1" stroke-dasharray="4" />
+                        <!-- Line to DB (Node 2) -->
+                        <line x1="426" y1="99" x2="250" y2="250" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1" stroke-dasharray="4" />
+                        <!-- Line to C# (Node 3) -->
+                        <line x1="49" y1="376" x2="250" y2="250" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1" stroke-dasharray="4" />
+                        <!-- Line to React (Node 4) -->
+                        <line x1="401" y1="401" x2="250" y2="250" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1" stroke-dasharray="4" />
+                        <!-- Line to Power BI (Node 5) -->
+                        <line x1="501" y1="274" x2="250" y2="250" stroke="rgba(242, 200, 17, 0.4)" stroke-width="1" stroke-dasharray="4" />
+                        <!-- Line to Server (Node 6) -->
+                        <line x1="-1" y1="274" x2="250" y2="250" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1" stroke-dasharray="4" />
+                    </svg>
+
+                        <div class="hero-blob">
+                            <img id="avatar-img" src="assets/img/avatar.png" alt="Beatriz Rizzo - Desenvolvedora de Software" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop'">
+                        </div>
+                        
+                        <!-- Tech Nodes connected by lines (simulated via CSS) -->
+                        <div class="tech-nodes-container">
+                            <div class="tech-node node-1" aria-label="Python & FastAPI"><i class="fab fa-python"></i></div>
+                            <div class="tech-node node-2" aria-label="PostgreSQL"><i class="fa-solid fa-database"></i></div>
+                            <div class="tech-node node-3" aria-label="C# .NET"><span style="font-weight:bold; font-size:14px;">C#</span></div>
+                            <div class="tech-node node-4" aria-label="React"><i class="fab fa-react"></i></div>
+                            <div class="tech-node node-5" aria-label="Power BI"><i class="fa-solid fa-chart-simple"></i></div>
+                            <div class="tech-node node-6" aria-label="SQL Server / APIs"><i class="fa-solid fa-server"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section section-padding" id="about">
+            <div class="container reveal-on-scroll">
+                <div class="section-header">
+                    <span class="section-subtitle">Conheça-me</span>
+                    <h2 class="section-title">Sobre Mim</h2>
+                    <div class="section-underline"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text-content">
+                        <h3 class="about-intro">
+                            Sou desenvolvedora de software com experiência prática na integração entre <span class="highlight-text">Back-end e Engenharia de Dados</span>.
+                        </h3>
+                        <p class="about-paragraph">
+                            Atuo na construção de APIs, pipelines, bancos de dados e aplicações analíticas voltadas à resolução de problemas corporativos.
+                        </p>
+                        <p class="about-paragraph">
+                            Desenvolvo APIs com C#/.NET e Python/FastAPI, modelo bancos PostgreSQL e SQL Server, estruturo fluxos de ETL e construo dashboards ou interfaces para transformar dados em informações úteis para o negócio.
+                        </p>
+                        <div class="about-stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number">2+</span>
+                                <span class="stat-label">Anos de Exp.</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label">Projetos Práticos</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label">Certificações</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-info-cards">
+                        <div class="info-card">
+                            <div class="info-card-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <h4 class="info-card-title">Pipelines & ETL</h4>
+                            <p class="info-card-desc">Construção de rotinas em Python (Pandas) para extração, tratamento e carga (arquitetura Staging, Silver, Gold).</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-icon"><i class="fa-solid fa-code-merge"></i></div>
+                            <h4 class="info-card-title">APIs & Integrações</h4>
+                            <p class="info-card-desc">Criação de serviços RESTful seguros e escaláveis para fluxo dinâmico de dados entre sistemas e marketplaces.</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                            <h4 class="info-card-title">BI & Analytics</h4>
+                            <p class="info-card-desc">Transformação de dados brutos em decisões de negócio através de modelagem avançada (DAX/Power Query).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process / Workflow Section -->
+        <section class="workflow-section section-padding" id="workflow">
+            <div class="container reveal-on-scroll">
+                <div class="section-header">
+                    <span class="section-subtitle">Meu Processo</span>
+                    <h2 class="section-title">Como transformo problemas em soluções</h2>
+                    <div class="section-underline"></div>
+                </div>
+                
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-icon"><i class="fa-regular fa-comments"></i></div>
+                        <div class="step-content">
+                            <h4>1. Entendimento do Problema</h4>
+                            <p>Análise de requisitos de negócio e identificação das necessidades reais de processamento e visualização.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-icon"><i class="fa-solid fa-database"></i></div>
+                        <div class="step-content">
+                            <h4>2. Fontes e Modelagem</h4>
+                            <p>Levantamento de APIs, planilhas ou bancos legados, e desenho da arquitetura e modelagem relacional (PostgreSQL/SQL Server).</p>
+                        </div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-icon"><i class="fa-solid fa-gears"></i></div>
+                        <div class="step-content">
+                            <h4>3. Pipelines e APIs</h4>
+                            <p>Desenvolvimento do back-end (Python/C#) para ingestão, tratamento (ETL) e disponibilização segura dos dados.</p>
+                        </div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-icon"><i class="fa-solid fa-desktop"></i></div>
+                        <div class="step-content">
+                            <h4>4. Visualização, Validação e Entrega</h4>
+                            <p>Construção de dashboards ou interfaces, validação da integridade dos dados, documentação e acompanhamento da solução em produção.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills / Especialidades Section -->
+        <section class="skills-section section-padding" id="skills">
+            <div class="container reveal-on-scroll">
+                <div class="section-header">
+                    <span class="section-subtitle">Competências Técnicas</span>
+                    <h2 class="section-title">Minhas Especialidades</h2>
+                    <div class="section-underline"></div>
+                </div>
+                
+                <!-- Injected via ES Modules / JavaScript -->
+                <div class="skills-grid" id="skills-container">
+                    <div class="loading-state" style="text-align: center; color: var(--text-secondary); grid-column: 1 / -1; padding: 40px;">
+                        <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 16px;"></i>
+                        <p>Carregando especialidades tecnológicas...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section section-padding" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Vitrine</span>
+                    <h2 class="section-title">Projetos em Destaque</h2>
+                    <div class="section-underline"></div>
+                </div>
+
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="data">Dados & ETL</button>
+                    <button class="filter-btn" data-filter="backend">Back-End</button>
+                    <button class="filter-btn" data-filter="frontend">Web & Frontend</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="data backend" data-project-id="p1">
+                        <div class="project-image">
+                            <img src="assets/img/project1.png" alt="Sistema Dedo Duro" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop'">
+                            <div class="project-overlay">
+                                <span class="btn-view-details">Ver Estudo de Caso <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Engenharia de Dados / Full Stack</span>
+                            <h3 class="project-title">Sistema Dedo Duro - Gestão de Estoque</h3>
+                            <p class="project-desc">
+                                Sistema inteligente de monitoramento e conciliação de estoque automático integrado com planilhas de vendas na nuvem, Supabase e painel React.
+                            </p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Pandas</span>
+                                <span>FastAPI</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="backend data" data-project-id="p2">
+                        <div class="project-image">
+                            <img src="assets/img/project2.png" alt="Simpliss Analytics" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop'">
+                            <div class="project-overlay">
+                                <span class="btn-view-details">Ver Estudo de Caso <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Back-End / Business Intelligence</span>
+                            <h3 class="project-title">Simpliss Analytics API & Painel</h3>
+                            <p class="project-desc">
+                                Painéis integrados com C# .NET Core e Power BI para visualização inteligente de indicadores financeiros de projetos e automação de permissões.
+                            </p>
+                            <div class="project-tech">
+                                <span>C# .NET Core</span>
+                                <span>Power BI</span>
+                                <span>SQL Server</span>
+                                <span>DAX</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="frontend backend" data-project-id="p3">
+                        <div class="project-image">
+                            <img src="assets/img/project3.png" alt="MedAnalytics" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop'">
+                            <div class="project-overlay">
+                                <span class="btn-view-details">Ver Estudo de Caso <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Web Full Stack / Health Analytics</span>
+                            <h3 class="project-title">MedAnalytics Clínico & BI</h3>
+                            <p class="project-desc">
+                                Plataforma de gestão hospitalar com acompanhamento em tempo real de fluxos de pronto-socorro (Protocolo de Manchester) e finanças.
+                            </p>
+                            <div class="project-tech">
+                                <span>React.js</span>
+                                <span>Tailwind CSS</span>
+                                <span>Recharts</span>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Detail Modal -->
+        <div class="modal" id="project-modal">
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close" aria-label="Fechar modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic content injected by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <section class="experience-section section-padding" id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Minha Jornada</span>
+                    <h2 class="section-title">Experiência</h2>
+                    <div class="section-underline"></div>
+                </div>
+                
+                <div class="timeline" id="experience-timeline">
+                    <!-- Dynamic timeline items injected by JavaScript -->
+                    <div class="loading-state" style="text-align: center; color: var(--text-secondary); padding: 40px;">
+                        <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 16px;"></i>
+                        <p>Carregando experiências...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Timeline Section -->
+        <section class="education-section section-padding" id="education">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Minha Base</span>
+                    <h2 class="section-title">Formação</h2>
+                    <div class="section-underline"></div>
+                </div>
+                
+                <div class="timeline" id="education-timeline">
+                    <!-- Dynamic timeline items injected by JavaScript -->
+                    <div class="loading-state" style="text-align: center; color: var(--text-secondary); padding: 40px;">
+                        <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 16px;"></i>
+                        <p>Carregando formação...</p>
+                    </div>
+                </div>
+
+                <!-- Certifications Grid -->
+                <div class="certifications-container" style="margin-top: 80px;">
+                    <h3 style="text-align: center; font-family: var(--font-heading); font-size: 26px; margin-bottom: 40px;">Cursos & Certificações</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div class="info-card" style="padding: 24px;">
+                            <span style="color: var(--color-secondary); font-weight: 700; font-size: 12px; text-transform: uppercase;">USP ESALQ • 2026</span>
+                            <h4 style="font-family: var(--font-heading); margin: 8px 0; font-size: 16px;">Engenharia de Prompt para Engenheiros de Software</h4>
+                            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.4;">Foco em estruturação, otimização de prompts e integração prática de LLMs para automação e produtividade.</p>
+                        </div>
+                        <div class="info-card" style="padding: 24px;">
+                            <span style="color: var(--color-secondary); font-weight: 700; font-size: 12px; text-transform: uppercase;">USP ESALQ • 2026</span>
+                            <h4 style="font-family: var(--font-heading); margin: 8px 0; font-size: 16px;">Introdução ao Machine Learning com Python</h4>
+                            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.4;">Fundamentos de ML aplicados à análise e modelagem de dados usando Python para geração de insights.</p>
+                        </div>
+                        <div class="info-card" style="padding: 24px;">
+                            <span style="color: var(--color-secondary); font-weight: 700; font-size: 12px; text-transform: uppercase;">Bootcamp • DIO & Vivo</span>
+                            <h4 style="font-family: var(--font-heading); margin: 8px 0; font-size: 16px;">Python AI Backend Developer</h4>
+                            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.4;">Desenvolvimento back-end estruturado e aplicação de inteligência artificial em serviços digitais.</p>
+                        </div>
+                        <div class="info-card" style="padding: 24px;">
+                            <span style="color: var(--color-secondary); font-weight: 700; font-size: 12px; text-transform: uppercase;">Bootcamp • DIO & Santander</span>
+                            <h4 style="font-family: var(--font-heading); margin: 8px 0; font-size: 16px;">Santander Bootcamp: Trilha AWS</h4>
+                            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.4;">Desenvolvimento e infraestrutura em nuvem utilizando os principais serviços da AWS.</p>
+                        </div>
+                        <div class="info-card" style="padding: 24px;">
+                            <span style="color: var(--color-secondary); font-weight: 700; font-size: 12px; text-transform: uppercase;">AWS Academy</span>
+                            <h4 style="font-family: var(--font-heading); margin: 8px 0; font-size: 16px;">AWS Academy Cloud Foundation</h4>
+                            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.4;">Conceitos fundamentais de arquitetura de nuvem, segurança e serviços básicos da AWS.</p>
+                        </div>
+                        <div class="info-card" style="padding: 24px;">
+                            <span style="color: var(--color-secondary); font-weight: 700; font-size: 12px; text-transform: uppercase;">Datacamp</span>
+                            <h4 style="font-family: var(--font-heading); margin: 8px 0; font-size: 16px;">Analista de Dados no Power BI</h4>
+                            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.4;">Visualização, ETL (Power Query), modelagem de dados e análise estatística usando DAX.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-padding" id="contact">
+            <div class="container reveal-on-scroll">
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-subtitle">Contato</span>
+                    <h2 class="section-title">Vamos construir algo juntos?</h2>
+                    <div class="section-underline"></div>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info reveal-on-scroll">
+                        <h3>Tem uma oportunidade ou projeto?</h3>
+                        <p>Estou aberta a oportunidades em Engenharia de Dados, desenvolvimento Back-end, APIs, automações e sistemas corporativos. Use o formulário ou entre em contato diretamente.</p>
+                        
+                        <div class="contact-details-list">
+                            <div class="contact-detail-item">
+                                <div class="contact-detail-icon">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="contact-detail-text">
+                                    <span>E-mail</span>
+                                    <a href="mailto:beatriztrizzo@gmail.com">beatriztrizzo@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-detail-item">
+                                <div class="contact-detail-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="contact-detail-text">
+                                    <span>Localização</span>
+                                    <strong>São João da Boa Vista, SP (Disponível Remoto / Híbrido)</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-social-icons">
+                            <a href="https://github.com/RizzoBia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/beatriz-tomei-rizzo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nome Completo</label>
+                                <input type="text" id="name" name="name" placeholder="Ex: Maria Silva" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Seu E-mail</label>
+                                <input type="email" id="email" name="email" placeholder="Ex: maria@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Tipo de Contato</label>
+                                <select id="subject" name="subject" required style="width: 100%; padding: 12px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--border-radius-sm);">
+                                    <option value="" disabled selected>Selecione um assunto...</option>
+                                    <option value="Oportunidade profissional">Oportunidade profissional</option>
+                                    <option value="Engenharia de Dados">Engenharia de Dados</option>
+                                    <option value="Desenvolvimento Back-end">Desenvolvimento Back-end</option>
+                                    <option value="Desenvolvimento Full Stack">Desenvolvimento Full Stack</option>
+                                    <option value="API ou integração">API ou integração</option>
+                                    <option value="Automação">Automação</option>
+                                    <option value="Dashboard e BI">Dashboard e BI</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" placeholder="Escreva sua mensagem aqui..." rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+                                Enviar Mensagem <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <div class="form-status" id="form-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h2 class="logo">&lt;BTR/&gt;</h2>
+                    <p>Desenvolvedora de Software & Engenharia de Dados</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/RizzoBia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/beatriz-tomei-rizzo" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:beatriztrizzo@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Beatriz Tomei Rizzo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script (ES Module) -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
