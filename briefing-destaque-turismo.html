@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Briefing Interativo — Desenvolvimento de Website | Destaque Turismo Viagens — Por Beatriz Rizzo">
+    <meta property="og:title" content="Briefing — Destaque Turismo Viagens | Beatriz Rizzo">
+    <meta property="og:description" content="Formulário interativo para levantamento de requisitos, planejamento e orçamento do novo website da Destaque Turismo Viagens.">
+    <meta property="og:type" content="website">
+    <title>Briefing — Destaque Turismo Viagens | Beatriz Rizzo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+
+    <!-- Google Fonts: Outfit & Inter (mesmo padrão do portfólio) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           DESIGN SYSTEM DO PORTFÓLIO BEATRIZ RIZZO (<BTR/>)
+           ========================================================================== */
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #121824;
+            --bg-card: rgba(23, 32, 51, 0.72);
+            --bg-card-hover: rgba(30, 42, 68, 0.9);
+            --bg-input: rgba(10, 14, 23, 0.65);
+            --border-color: rgba(255, 255, 255, 0.09);
+            --border-color-hover: rgba(139, 92, 246, 0.45);
+            --border-focus: #06b6d4;
+
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+
+            --color-primary: #8b5cf6;
+            --color-primary-hover: #7c3aed;
+            --color-secondary: #06b6d4;
+            --color-secondary-hover: #0891b2;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+
+            --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            --gradient-glow: 0 0 25px rgba(139, 92, 246, 0.28);
+            --gradient-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.25);
+
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 100px;
+        }
+
+        /* Background Glows */
+        .bg-glow {
+            position: fixed;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.2;
+        }
+        .bg-glow-1 { top: -80px; right: -80px; background-color: var(--color-primary); }
+        .bg-glow-2 { bottom: 10%; left: -100px; background-color: var(--color-secondary); }
+
+        .highlight-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+
+        /* ==========================================================================
+           STICKY HEADER & PROGRESS BAR (MOBILE-FIRST)
+           ========================================================================== */
+        .top-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 23, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            gap: 12px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-bracket { color: var(--color-secondary); }
+
+        .logo-tag {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 3px 8px;
+            border-radius: 100px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .autosave-badge {
+            font-size: 12px;
+            color: var(--color-success);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 5px 10px;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .btn-mode-toggle {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-mode-toggle:hover {
+            border-color: var(--color-secondary);
+            color: var(--color-secondary);
+        }
+
+        /* Progress Bar Strip */
+        .progress-strip {
+            background: rgba(18, 24, 36, 0.95);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .progress-count {
+            color: var(--color-secondary);
+            font-weight: 700;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--gradient-primary);
+            border-radius: 100px;
+            transition: width 0.35s ease;
+        }
+
+        /* ==========================================================================
+           HERO / INTRO CARD
+           ========================================================================== */
+        .hero-briefing {
+            padding: 32px 0 20px;
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, rgba(23, 32, 51, 0.85), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .hero-badge {
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--color-secondary);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(26px, 5vw, 38px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.8px;
+            margin-bottom: 8px;
+        }
+
+        .hero-client {
+            font-family: var(--font-heading);
+            font-size: clamp(18px, 3.5vw, 22px);
+            font-weight: 600;
+            color: var(--color-secondary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-objective {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            background: rgba(10, 14, 23, 0.5);
+            border-left: 3px solid var(--color-primary);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-bottom: 20px;
+        }
+
+        .hero-objective strong {
+            color: var(--text-primary);
+        }
+
+        .hero-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.22);
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+        }
+
+        .hero-tip i {
+            color: var(--color-primary);
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        /* Client Quick Info Bar */
+        .client-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 600px) {
+            .client-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .input-styled {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 15px; /* >=16px evita zoom automático no iOS */
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .input-styled:focus {
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+            outline: none;
+        }
+
+        /* ==========================================================================
+           HORIZONTAL SECTION PILLS (NAVIGATION)
+           ========================================================================== */
+        .section-nav-wrapper {
+            margin: 16px 0 22px;
+            position: relative;
+        }
+
+        .section-nav-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-pills {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-primary) transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .section-pills::-webkit-scrollbar {
+            height: 4px;
+        }
+        .section-pills::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 10px;
+        }
+
+        .section-pill {
+            flex-shrink: 0;
+            padding: 9px 15px;
+            border-radius: 100px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+        }
+
+        .section-pill:hover {
+            border-color: var(--border-color-hover);
+            color: var(--text-primary);
+        }
+
+        .section-pill.active {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: var(--gradient-glow);
+        }
+
+        .section-pill .pill-check {
+            font-size: 11px;
+            opacity: 0.85;
+        }
+
+        .section-pill.completed:not(.active) {
+            border-color: rgba(16, 185, 129, 0.45);
+            color: #34d399;
+        }
+
+        /* ==========================================================================
+           SECTION & QUESTION CARDS
+           ========================================================================== */
+        .briefing-section {
+            display: none;
+            animation: fadeIn 0.28s ease;
+        }
+
+        .briefing-section.active {
+            display: block;
+        }
+
+        body.show-all-sections .briefing-section {
+            display: block;
+            margin-bottom: 32px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-card-header {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(6, 182, 212, 0.12));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .section-card-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .section-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: var(--gradient-glow);
+        }
+
+        .section-card-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(18px, 3.5vw, 22px);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-card-header p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .question-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .question-card:focus-within {
+            border-color: var(--border-color-hover);
+            background: var(--bg-card-hover);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .question-card.answered {
+            border-left: 3px solid var(--color-secondary);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .q-number {
+            background: rgba(139, 92, 246, 0.18);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 13px;
+            min-width: 32px;
+            height: 28px;
+            padding: 0 8px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .question-card.answered .q-number {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .q-title {
+            font-size: 15.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.45;
+        }
+
+        /* Quick Chips for Mobile Tapping */
+        .quick-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .chip-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 13px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .chip-btn:hover {
+            border-color: rgba(6, 182, 212, 0.45);
+            color: var(--text-primary);
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        .chip-btn.selected {
+            background: rgba(6, 182, 212, 0.18);
+            border-color: var(--color-secondary);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+        }
+
+        .chip-btn.selected::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--color-secondary);
+        }
+
+        .q-textarea {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 15px; /* >=16px friendly on mobile */
+            font-family: var(--font-body);
+            line-height: 1.5;
+            resize: vertical;
+            min-height: 66px;
+            transition: var(--transition);
+        }
+
+        .q-textarea::placeholder {
+            color: var(--text-muted);
+            font-size: 13.5px;
+        }
+
+        .q-textarea:focus {
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+            outline: none;
+        }
+
+        /* ==========================================================================
+           STEP NAVIGATION BUTTONS (PREV / NEXT SECTION)
+           ========================================================================== */
+        .wizard-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        body.show-all-sections .wizard-controls {
+            display: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: var(--font-body);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #fff;
+            box-shadow: var(--gradient-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-color-hover);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(16, 185, 129, 0.5);
+        }
+
+        /* ==========================================================================
+           NEXT STEPS & FINAL SUBMISSION CARD
+           ========================================================================== */
+        .next-steps-card {
+            background: linear-gradient(145deg, rgba(23, 32, 51, 0.9), rgba(10, 14, 23, 0.95));
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            margin-top: 32px;
+            box-shadow: var(--gradient-glow-cyan);
+        }
+
+        .next-steps-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .steps-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 18px 0 24px;
+        }
+
+        .step-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-box p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .submit-actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .submit-actions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .developer-signature {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+        }
+
+        .developer-signature strong {
+            color: var(--text-primary);
+        }
+
+        /* ==========================================================================
+           MODAL DE SUCESSO / ENVIO
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 14, 23, 0.88);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 100%;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--color-success);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 16px;
+        }
+
+        .modal-card h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .modal-card p {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            margin-bottom: 20px;
+        }
+
+        .modal-btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            left: 24px;
+            max-width: 380px;
+            margin: 0 auto;
+            background: #1e293b;
+            border: 1px solid var(--color-secondary);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            z-index: 1000;
+            transform: translateY(120px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           ESTILO DE IMPRESSÃO / SALVAR COMO PDF (CLEAN E COMPLETO)
+           ========================================================================== */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                padding: 0 !important;
+            }
+            .bg-glow, .top-header, .section-nav-wrapper, .wizard-controls, .quick-chips, .submit-actions-grid, .hero-tip, .modal-overlay, .toast {
+                display: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 10mm !important;
+            }
+            .briefing-section {
+                display: block !important;
+                margin-bottom: 18px !important;
+                page-break-inside: avoid;
+            }
+            .hero-card, .section-card-header, .question-card, .next-steps-card {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                margin-bottom: 10px !important;
+                padding: 12px 14px !important;
+            }
+            .hero-title, .section-card-header h2, .q-title, .next-steps-title {
+                color: #0f172a !important;
+                -webkit-text-fill-color: #0f172a !important;
+            }
+            .hero-client, .q-number {
+                color: #4f46e5 !important;
+                border-color: #4f46e5 !important;
+            }
+            .q-textarea, .input-styled {
+                background: #f8fafc !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+                min-height: 38px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Top Header & Progress -->
+    <header class="top-header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="https://beatriz-rizzo.vercel.app/" target="_blank" class="logo">
+                    <span><span class="logo-bracket">&lt;</span>BTR<span class="logo-bracket">/&gt;</span></span>
+                    <span class="logo-tag">Briefing Interativo</span>
+                </a>
+                <div class="header-right">
+                    <span class="autosave-badge" id="autosave-indicator">
+                        <i class="fa-solid fa-cloud-check"></i> <span id="autosave-text">Salvo no aparelho</span>
+                    </span>
+                    <button type="button" class="btn-mode-toggle" id="toggle-view-btn" title="Alternar entre navegação por etapas ou lista completa">
+                        <i class="fa-solid fa-list-check"></i> <span id="toggle-view-text">Ver Todas</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="progress-strip">
+            <div class="container">
+                <div class="progress-info">
+                    <span id="current-section-label">Etapa 1 de 12 • Sobre a empresa</span>
+                    <span>Respondidas: <strong class="progress-count" id="answered-count">0 / 85</strong></span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Card -->
+        <section class="hero-briefing">
+            <div class="hero-card">
+                <span class="hero-badge"><i class="fa-solid fa-plane-departure"></i> Briefing — Desenvolvimento de Website</span>
+                <h1 class="hero-title">Destaque <span class="highlight-text">Turismo Viagens</span></h1>
+                <div class="hero-client">Planejamento, Arquitetura & Orçamento do Novo Website</div>
+
+                <div class="hero-objective">
+                    <strong>Objetivo:</strong> levantar as informações necessárias para o planejamento, desenvolvimento e orçamento do novo website da <strong>Destaque Turismo Viagens</strong>. As respostas permitirão definir as funcionalidades, integrações, cronograma e investimento do projeto.
+                </div>
+
+                <div class="hero-tip">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <div>
+                        <strong>Preenchimento rápido pelo celular:</strong> Toque nas opções rápidas abaixo de cada pergunta para preencher com 1 toque ou digite livremente. Suas respostas ficam <strong>salvas automaticamente</strong> neste aparelho mesmo se você fechar a página!
+                    </div>
+                </div>
+
+                <div class="client-info-grid">
+                    <div class="field-group">
+                        <label for="client-name"><i class="fa-regular fa-user"></i> Seu Nome / Responsável</label>
+                        <input type="text" id="client-name" class="input-styled" placeholder="Ex: João Silva (Destaque Turismo)">
+                    </div>
+                    <div class="field-group">
+                        <label for="client-contact"><i class="fa-brands fa-whatsapp"></i> Seu WhatsApp ou E-mail</label>
+                        <input type="text" id="client-contact" class="input-styled" placeholder="Ex: (19) 99999-9999 ou email@empresa.com">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Navigation Pills -->
+        <div class="section-nav-wrapper">
+            <div class="section-nav-label">
+                <span><i class="fa-solid fa-compass"></i> Navegue pelas 12 etapas (deslize para o lado):</span>
+            </div>
+            <div class="section-pills" id="section-pills"></div>
+        </div>
+
+        <!-- Dynamic Sections Container -->
+        <form id="briefing-form">
+            <div id="sections-container"></div>
+        </form>
+
+        <!-- Next Steps & Submit Card -->
+        <section class="next-steps-card" id="final-section">
+            <h3 class="next-steps-title">
+                <i class="fa-solid fa-rocket" style="color: var(--color-secondary);"></i>
+                Próximos Passos
+            </h3>
+            <p style="font-size: 14px; color: var(--text-secondary);">
+                Após o preenchimento deste briefing, serão realizados:
+            </p>
+
+            <div class="steps-timeline">
+                <div class="step-box">
+                    <span class="step-num">1</span>
+                    <p>Análise das necessidades e requisitos apresentados.</p>
+                </div>
+                <div class="step-box">
+                    <span class="step-num">2</span>
+                    <p>Avaliação técnica das integrações e APIs.</p>
+                </div>
+                <div class="step-box">
+                    <span class="step-num">3</span>
+                    <p>Definição do escopo e das funcionalidades da 1ª versão.</p>
+                </div>
+                <div class="step-box">
+                    <span class="step-num">4</span>
+                    <p>Elaboração do cronograma de desenvolvimento.</p>
+                </div>
+                <div class="step-box">
+                    <span class="step-num">5</span>
+                    <p>Apresentação da proposta comercial com investimento e condições.</p>
+                </div>
+            </div>
+
+            <div class="submit-actions-grid">
+                <button type="button" class="btn btn-primary" id="btn-submit-email">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Respostas Agora
+                </button>
+                <button type="button" class="btn btn-whatsapp" id="btn-submit-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Enviar via WhatsApp
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-copy-all">
+                    <i class="fa-regular fa-copy"></i> Copiar Respostas
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="window.print()">
+                    <i class="fa-solid fa-file-pdf"></i> Salvar / Imprimir PDF
+                </button>
+            </div>
+
+            <div class="developer-signature">
+                <div>
+                    <strong>Responsável pelo desenvolvimento:</strong> Beatriz Rizzo
+                </div>
+                <div style="display: flex; gap: 14px; align-items: center;">
+                    <a href="https://beatriz-rizzo.vercel.app/" target="_blank" style="color: var(--color-secondary); text-decoration: none; font-weight: 600;">
+                        <i class="fa-solid fa-globe"></i> beatriz-rizzo.vercel.app
+                    </a>
+                    <a href="https://wa.me/5519996900426" target="_blank" style="color: var(--text-secondary); text-decoration: none;">
+                        <i class="fa-brands fa-whatsapp"></i> (19) 99690-0426
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-card">
+            <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+            <h3>Briefing Enviado com Sucesso!</h3>
+            <p id="modal-msg">Suas respostas foram registradas e enviadas para Beatriz Rizzo. Você também pode encaminhar uma cópia direta no WhatsApp ou baixar em PDF abaixo:</p>
+            <div class="modal-btn-stack">
+                <button type="button" class="btn btn-whatsapp" id="modal-whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Confirmar e Enviar no WhatsApp
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="window.print()">
+                    <i class="fa-solid fa-file-pdf"></i> Salvar Cópia em PDF
+                </button>
+                <button type="button" class="btn btn-secondary" id="modal-close-btn">
+                    Voltar ao Formulário
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check" style="color: var(--color-secondary);"></i>
+        <span id="toast-text">Copiado com sucesso!</span>
+    </div>
+
+    <script>
+        // ==========================================================================
+        // BASE COMPLETA DAS 85 PERGUNTAS E 12 SEÇÕES DO BRIEFING
+        // ==========================================================================
+        const BRIEFING_SECTIONS = [
+            {
+                id: 1,
+                shortTitle: "1. Empresa",
+                title: "1. Sobre a empresa e o projeto",
+                icon: "fa-solid fa-building",
+                questions: [
+                    { n: 1, q: "Qual é o principal objetivo do novo site? (Fortalecer a marca, captar clientes, divulgar pacotes, vender ingressos ou todos esses objetivos?)", chips: ["Todos esses objetivos", "Fortalecer a marca", "Captar clientes", "Divulgar pacotes", "Vender ingressos"] },
+                    { n: 2, q: "A empresa já possui um site? Caso sim, qual é o endereço?", chips: ["Sim, já possui (informar abaixo)", "Não possui site ainda"], placeholder: "Caso possua, digite o endereço (ex: www.destaqueturismo.com.br)..." },
+                    { n: 3, q: "O novo site substituirá o atual ou será desenvolvido do zero?", chips: ["Substituirá o atual", "Será desenvolvido do zero", "Reformulação completa"] },
+                    { n: 4, q: "Qual é o público-alvo principal da empresa?", chips: ["Famílias", "Casais", "Jovens / Aventura", "Terceira idade", "Excursões / Grupos", "Corporativo"] },
+                    { n: 5, q: "Quais são os principais diferenciais da Destaque Turismo em relação aos concorrentes?", placeholder: "Ex: Atendimento personalizado, roteiros exclusivos, parcelamento facilitado, suporte 24h..." },
+                    { n: 6, q: "Existem sites de outras empresas que vocês gostam e gostariam de usar como referência?", placeholder: "Cole links ou nomes de sites que vocês acham bonitos e funcionais..." },
+                    { n: 7, q: "Existe alguma data específica em que o site precisa estar publicado?", chips: ["O quanto antes", "Em até 30 dias", "Em até 60 dias", "Sem data fixa (foco na qualidade)"] }
+                ]
+            },
+            {
+                id: 2,
+                shortTitle: "2. Design",
+                title: "2. Identidade visual e design",
+                icon: "fa-solid fa-palette",
+                questions: [
+                    { n: 8, q: "A empresa já possui logotipo, paleta de cores e identidade visual definida?", chips: ["Sim, identidade completa", "Apenas logotipo e cores", "Ainda não possui"] },
+                    { n: 9, q: "Possuem manual de marca ou arquivos do logotipo em alta qualidade?", chips: ["Sim (Vetor / PDF / PNG)", "Apenas imagem simples", "Não possuímos"] },
+                    { n: 10, q: "Qual estilo visual desejam para o site? (Moderno, sofisticado, minimalista, descontraído, entre outros.)", chips: ["Moderno", "Sofisticado", "Minimalista", "Descontraído", "Vibrante e acolhedor"] },
+                    { n: 11, q: "Possuem fotografias e vídeos próprios dos destinos e experiências?", chips: ["Sim, fotos e vídeos próprios", "Apenas algumas fotos", "Usaremos banco de imagens profissional"] },
+                    { n: 12, q: "Existe preferência por algum estilo de apresentação dos pacotes, banners e imagens?", chips: ["Banners amplos em destaque", "Cards organizados em vitrine", "Carrossel interativo", "Vídeos em destaque", "Aberto a sugestões"] },
+                    { n: 13, q: "O site precisará estar disponível em outros idiomas além do português?", chips: ["Apenas Português", "Português + Inglês", "Português + Espanhol", "Português + Inglês + Espanhol"] }
+                ]
+            },
+            {
+                id: 3,
+                shortTitle: "3. Estrutura",
+                title: "3. Estrutura do website",
+                icon: "fa-solid fa-sitemap",
+                questions: [
+                    { n: 14, q: "Quais páginas desejam incluir inicialmente? (Início, Sobre Nós, Destinos, Pacotes, Experiências, Blog, Contato etc.)", chips: ["Início", "Sobre Nós", "Destinos", "Pacotes", "Experiências", "Ingressos", "Blog", "Parceiros", "FAQ", "Contato"] },
+                    { n: 15, q: "Quais informações devem aparecer em destaque na página inicial?", chips: ["Busca de pacotes/destinos", "Pacotes em promoção", "Destinos mais procurados", "Venda de ingressos", "Depoimentos", "Botão WhatsApp"] },
+                    { n: 16, q: "Desejam incluir avaliações e depoimentos de clientes?", chips: ["Sim, no próprio site", "Sim, integrado ao Google Meu Negócio", "Não no momento"] },
+                    { n: 17, q: "Será necessário incluir perguntas frequentes (FAQ)?", chips: ["Sim", "Não", "Em uma segunda etapa"] },
+                    { n: 18, q: "Desejam disponibilizar informações sobre parceiros comerciais?", chips: ["Sim", "Não"] },
+                    { n: 19, q: "Haverá alguma área exclusiva para clientes ou colaboradores?", chips: ["Sim, área do cliente", "Sim, área de colaboradores", "Ambas", "Não haverá"] },
+                    { n: 20, q: "A equipe deseja conseguir alterar textos, imagens e informações do site sem depender de um desenvolvedor?", chips: ["Sim, painel administrativo completo", "Sim, apenas pacotes, banners e blog", "Não, preferimos suporte técnico"] }
+                ]
+            },
+            {
+                id: 4,
+                shortTitle: "4. Pacotes",
+                title: "4. Destinos e pacotes turísticos",
+                icon: "fa-solid fa-map-location-dot",
+                questions: [
+                    { n: 21, q: "Quantos destinos ou pacotes pretendem cadastrar inicialmente?", chips: ["Até 15 pacotes", "De 15 a 40 pacotes", "De 40 a 100 pacotes", "Mais de 100 pacotes"] },
+                    { n: 22, q: "Quais informações cada pacote deverá apresentar? (Descrição, roteiro, duração, hospedagem, transporte, valores, fotos etc.)", chips: ["Descrição", "Roteiro completo", "Duração / Datas", "Hospedagem", "Transporte", "Valores e parcelamento", "Galeria de fotos", "O que inclui"] },
+                    { n: 23, q: "Os pacotes terão preços fixos ou valores sujeitos a consulta?", chips: ["Preços fixos visíveis", "Valor 'A partir de R$...'", "Valores sujeitos a consulta", "Ambos (configurável por pacote)"] },
+                    { n: 24, q: "Desejam permitir que os visitantes filtrem pacotes por destino, preço, período ou categoria?", chips: ["Todos esses filtros", "Por destino", "Por faixa de preço", "Por período / mês", "Por categoria"] },
+                    { n: 25, q: "Os pacotes serão cadastrados manualmente pela equipe ou importados de algum sistema?", chips: ["Cadastrados manualmente no painel", "Importados de sistema / API", "Ambos"] },
+                    { n: 26, q: "A contratação dos pacotes será realizada diretamente no site ou finalizada por um consultor?", chips: ["Finalizada por um consultor", "Compra direta no site", "Ambas as opções"] },
+                    { n: 27, q: "Ao clicar em \"Solicitar orçamento\" ou \"Falar com um consultor\", o visitante deverá ser direcionado ao WhatsApp, preencher um formulário ou iniciar um atendimento no CRM?", chips: ["Direto para o WhatsApp", "Capturar nome/WhatsApp antes e ir p/ WhatsApp", "Preencher formulário enviado ao CRM", "Iniciar atendimento no CRM"] },
+                    { n: 28, q: "Será necessário informar a disponibilidade de datas e vagas?", chips: ["Sim, datas e vagas disponíveis", "Apenas datas de saída", "Não é necessário"] },
+                    { n: 29, q: "Quem ficará responsável pela atualização dos pacotes e preços?", chips: ["Equipe interna da Destaque", "Consultores de vendas", "Sincronização automática via API"] }
+                ]
+            },
+            {
+                id: 5,
+                shortTitle: "5. Blog & SEO",
+                title: "5. Blog e conteúdos",
+                icon: "fa-solid fa-newspaper",
+                questions: [
+                    { n: 30, q: "Quais categorias de conteúdo desejam publicar no blog?", chips: ["Dicas de viagem", "Guias de destinos", "Roteiros", "Atrações e parques", "Novidades da agência"] },
+                    { n: 31, q: "A empresa já possui artigos e materiais preparados?", chips: ["Sim, já temos artigos", "Estamos preparando", "Ainda não possuímos"] },
+                    { n: 32, q: "Quem será responsável pela criação dos textos?", chips: ["Equipe interna", "Redator / Marketing parceiro", "Precisaremos de auxílio"] },
+                    { n: 33, q: "Desejam permitir que colaboradores publiquem artigos por meio de um painel administrativo?", chips: ["Sim", "Não"] },
+                    { n: 34, q: "Existe interesse em otimização para mecanismos de busca (SEO), visando atrair visitantes pelo Google?", chips: ["Sim, prioridade alta", "Sim, configuração essencial", "Não no momento"] }
+                ]
+            },
+            {
+                id: 6,
+                shortTitle: "6. CRM & Leads",
+                title: "6. Atendimento e integração com CRM",
+                icon: "fa-solid fa-headset",
+                questions: [
+                    { n: 35, q: "Qual CRM a empresa utiliza atualmente?", placeholder: "Digite o nome do CRM (ex: RD Station, HubSpot, Kommo, Pipedrive, Bitrix24, Monde, etc.)..." },
+                    { n: 36, q: "O CRM possui documentação de integração ou API disponível?", chips: ["Sim, possui API / Webhook", "Não sei informar (podemos verificar)", "Não possui"] },
+                    { n: 37, q: "Quais informações dos visitantes precisam ser registradas no CRM? (Nome, telefone, e-mail, destino de interesse, período da viagem etc.)", chips: ["Nome", "Telefone / WhatsApp", "E-mail", "Destino/Pacote de interesse", "Período da viagem", "Nº de passageiros"] },
+                    { n: 38, q: "Os leads deverão ser direcionados automaticamente para um consultor específico?", chips: ["Sim, rodízio automático entre consultores", "Sim, por tipo de destino/pacote", "Não, caem em uma fila geral"] },
+                    { n: 39, q: "A empresa utiliza WhatsApp Business, plataforma de atendimento ou algum sistema de distribuição de conversas?", chips: ["WhatsApp Business comum", "Plataforma multiatendimento (chatbot/fila)", "WhatsApp integrado ao CRM"] },
+                    { n: 40, q: "Desejam identificar de qual página, pacote ou campanha o contato foi originado?", chips: ["Sim (rastrear página, pacote e UTMs de anúncios)", "Apenas saber o pacote clicado", "Não é necessário"] },
+                    { n: 41, q: "Será necessário enviar mensagens automáticas ou notificações após o preenchimento de formulários?", chips: ["Sim, WhatsApp e E-mail automáticos", "Apenas notificação para o consultor", "Apenas E-mail", "Não"] }
+                ]
+            },
+            {
+                id: 7,
+                shortTitle: "7. Experiências",
+                title: "7. Experiências, passeios e parceiros",
+                icon: "fa-solid fa-compass",
+                questions: [
+                    { n: 42, q: "Quais tipos de experiências serão divulgados? (Passeios, atrações, atividades, ingressos, excursões etc.)", chips: ["Passeios", "Atrações", "Atividades", "Ingressos", "Excursões", "Receptivo / Transfers"] },
+                    { n: 43, q: "As experiências serão oferecidas pela própria empresa ou por parceiros?", chips: ["Própria empresa", "Parceiros", "Ambos"] },
+                    { n: 44, q: "A área de experiências funcionará como catálogo informativo ou permitirá realizar compras?", chips: ["Catálogo + botão para consultor", "Permitirá compra online direta", "Ambos (conforme a experiência)"] },
+                    { n: 45, q: "As informações serão cadastradas manualmente ou obtidas automaticamente de fornecedores?", chips: ["Cadastradas manualmente", "Obtidas automaticamente via API", "Ambos"] },
+                    { n: 46, q: "Os parceiros possuem páginas externas para as quais os visitantes poderão ser direcionados?", chips: ["Sim", "Não, tudo dentro do site da Destaque", "Alguns parceiros sim"] }
+                ]
+            },
+            {
+                id: 8,
+                shortTitle: "8. Ingressos & Loja",
+                title: "8. Loja de ingressos e e-commerce",
+                icon: "fa-solid fa-ticket",
+                questions: [
+                    { n: 47, q: "Quais tipos de ingressos serão comercializados?", chips: ["Parques temáticos e aquáticos", "Atrações turísticas", "Shows e eventos", "Passeios e experiências"] },
+                    { n: 48, q: "A loja será exclusiva para ingressos ou também venderá passeios, experiências e outros serviços?", chips: ["Exclusiva para ingressos", "Ingressos + passeios + experiências", "E-commerce completo de turismo"] },
+                    { n: 49, q: "A loja deverá funcionar em um subdomínio separado, como ingressos.nomedosite.com.br?", chips: ["Sim, subdomínio separado", "Integrada no domínio principal", "Aberto à melhor recomendação técnica"] },
+                    { n: 50, q: "O visitante deverá finalizar a compra dentro do próprio site ou será redirecionado para uma plataforma parceira?", chips: ["Finalizar compra dentro do próprio site", "Redirecionado para plataforma parceira", "Depende do ingresso/fornecedor"] },
+                    { n: 51, q: "Quem receberá os pagamentos: a Destaque Turismo ou o fornecedor dos ingressos?", chips: ["Destaque Turismo", "Fornecedor dos ingressos", "Split de pagamento / Ambos"] },
+                    { n: 52, q: "Quais formas de pagamento deverão ser aceitas? (Pix, cartão de crédito, parcelamento etc.)", chips: ["Pix", "Cartão de crédito à vista", "Cartão parcelado", "Boleto"] },
+                    { n: 53, q: "Os ingressos possuem datas, horários, categorias ou quantidades limitadas?", chips: ["Datas e horários específicos", "Categorias (Inteira, Meia, Infantil, Morador)", "Quantidades/vagas limitadas", "Todos esses"] },
+                    { n: 54, q: "Os preços e a disponibilidade deverão ser atualizados automaticamente?", chips: ["Sim, em tempo real via API", "Atualizados pelo painel", "Ambos"] },
+                    { n: 55, q: "Após a compra, o cliente receberá ingresso digital, voucher, QR Code ou confirmação de reserva?", chips: ["Ingresso digital com QR Code", "Voucher em PDF", "Confirmação de reserva por E-mail/WhatsApp"] },
+                    { n: 56, q: "Quem será responsável pela emissão dos ingressos?", chips: ["Emissão automática via integração/API", "Equipe da Destaque Turismo", "Plataforma do fornecedor"] },
+                    { n: 57, q: "Como deverão funcionar cancelamentos, reembolsos e alterações de reservas?", chips: ["Solicitação via atendimento / WhatsApp", "Pela área do cliente no site", "De acordo com a regra da API fornecedora"] },
+                    { n: 58, q: "Será necessário criar uma área para o cliente consultar seus pedidos?", chips: ["Sim (Área 'Meus Pedidos / Meus Ingressos')", "Não, envio apenas por e-mail e WhatsApp"] },
+                    { n: 59, q: "A empresa já utiliza algum sistema de vendas ou gestão de ingressos?", chips: ["Sim (informar abaixo)", "Ainda não utiliza"], placeholder: "Caso utilize, informe o nome do sistema ou portal..." }
+                ]
+            },
+            {
+                id: 9,
+                shortTitle: "9. APIs",
+                title: "9. Integração com API",
+                icon: "fa-solid fa-plug",
+                questions: [
+                    { n: 60, q: "Qual é o nome da empresa ou plataforma que disponibilizará a API?", placeholder: "Informe o nome do fornecedor/plataforma da API..." },
+                    { n: 61, q: "Existe documentação técnica da API? Caso sim, poderiam compartilhar o link ou arquivo?", chips: ["Sim, já temos o link/arquivo", "Vamos solicitar ao fornecedor", "Ainda não temos"] },
+                    { n: 62, q: "A empresa já possui contrato e acesso autorizado à API?", chips: ["Sim, contrato e credenciais ativas", "Em fase de contratação", "Ainda vamos iniciar contato"] },
+                    { n: 63, q: "Existe um ambiente de testes disponibilizado pelo fornecedor?", chips: ["Sim (Sandbox / Homologação)", "Não sei informar", "Não possui"] },
+                    { n: 64, q: "Quais informações precisam ser consultadas pela API? (Produtos, preços, disponibilidade, datas, reservas etc.)", chips: ["Produtos / Ingressos", "Preços e tarifas", "Disponibilidade e datas", "Criação de reservas", "Emissão de vouchers"] },
+                    { n: 65, q: "A API será utilizada apenas para consultar informações ou também para criar reservas, realizar compras e emitir ingressos?", chips: ["Fluxo completo (consulta, reserva, compra e emissão)", "Apenas consulta de catálogo, preços e datas"] },
+                    { n: 66, q: "A API possui limitações, custos adicionais ou exigências técnicas?", chips: ["Sem custos adicionais", "Possui taxa por transação", "Vamos verificar na documentação"] },
+                    { n: 67, q: "Existe um contato técnico do fornecedor para esclarecer dúvidas durante a integração?", chips: ["Sim, temos contato do suporte técnico deles", "Vamos solicitar"] }
+                ]
+            },
+            {
+                id: 10,
+                shortTitle: "10. Domínio & Infra",
+                title: "10. Domínio, hospedagem e infraestrutura",
+                icon: "fa-solid fa-server",
+                questions: [
+                    { n: 68, q: "A empresa já possui domínio registrado? Qual?", chips: ["Sim, já possuímos (informar abaixo)", "Ainda vamos registrar"], placeholder: "Qual é o domínio? Ex: destaqueturismo.com.br" },
+                    { n: 69, q: "Já existe um serviço de hospedagem contratado?", chips: ["Sim", "Não, aceitamos recomendação técnica", "Não sei informar"] },
+                    { n: 70, q: "Quem administra atualmente o domínio e a hospedagem?", placeholder: "Ex: Equipe interna, agência anterior, Registro.br / HostGator / Hostinger..." },
+                    { n: 71, q: "A empresa possui e-mails profissionais vinculados ao domínio?", chips: ["Sim (Google Workspace / Microsoft 365)", "Sim, webmail da hospedagem", "Ainda não possui"] },
+                    { n: 72, q: "Existem ferramentas que precisam ser mantidas ou integradas, como Google Analytics, Google Tag Manager ou plataformas de anúncios?", chips: ["Google Analytics (GA4)", "Google Tag Manager (GTM)", "Pixel da Meta (Instagram/Facebook)", "Google Ads", "RD Station / CRM"] },
+                    { n: 73, q: "Quem será responsável pelos custos recorrentes de hospedagem, domínio, plugins, APIs e serviços externos?", chips: ["Destaque Turismo diretamente", "Gostaria de orçamento com infraestrutura inclusa"] }
+                ]
+            },
+            {
+                id: 11,
+                shortTitle: "11. Manutenção",
+                title: "11. Administração e manutenção",
+                icon: "fa-solid fa-screwdriver-wrench",
+                questions: [
+                    { n: 74, q: "Quem ficará responsável por atualizar os conteúdos após a publicação?", chips: ["Equipe interna da Destaque", "Desejamos apoio/manutenção da desenvolvedora", "Ambos"] },
+                    { n: 75, q: "A equipe precisará de treinamento para utilizar o painel administrativo?", chips: ["Sim, reunião de treinamento + vídeo gravado", "Apenas guia prático", "Não será necessário"] },
+                    { n: 76, q: "Quantas pessoas precisarão acessar o painel e quais permissões deverão possuir?", chips: ["1 a 2 administradores", "3 a 5 pessoas (Admin + Consultores/Editores)", "Mais de 5 pessoas"] },
+                    { n: 77, q: "A empresa deseja contratar manutenção técnica recorrente após a entrega?", chips: ["Sim, queremos proposta de manutenção mensal", "Apenas suporte sob demanda", "Vamos avaliar"] },
+                    { n: 78, q: "Quem será responsável por atender problemas técnicos, atualizar plugins e realizar backups?", chips: ["Desejamos que a desenvolvedora cuide disso", "Equipe interna"] },
+                    { n: 79, q: "Existe previsão de novas funcionalidades após o lançamento?", chips: ["Sim, evolução contínua em fases", "Não no momento"] }
+                ]
+            },
+            {
+                id: 12,
+                shortTitle: "12. Planejamento",
+                title: "12. Planejamento e aprovação",
+                icon: "fa-solid fa-clipboard-check",
+                questions: [
+                    { n: 80, q: "Quais funcionalidades são indispensáveis para a primeira versão do site?", placeholder: "O que não pode faltar de jeito nenhum no lançamento (MVP)?" },
+                    { n: 81, q: "Quais funcionalidades podem ser implementadas em uma segunda etapa?", placeholder: "Ex: Área do cliente, blog, novos filtros, integrações secundárias..." },
+                    { n: 82, q: "Quem será o responsável pela aprovação do layout e das funcionalidades?", placeholder: "Nome e cargo do(s) decisor(es)..." },
+                    { n: 83, q: "Quem fornecerá os textos, imagens, documentos e acessos necessários?", placeholder: "Nome ou setor responsável..." },
+                    { n: 84, q: "Existe um orçamento previsto para o desenvolvimento?", chips: ["Sim (informar faixa abaixo)", "Aguardando orçamento conforme escopo", "Podemos trabalhar por fases (MVP + Evolução)"] },
+                    { n: 85, q: "Há alguma necessidade específica que ainda não foi mencionada?", placeholder: "Espaço livre para observações, dúvidas ou ideias adicionais..." }
+                ]
+            }
+        ];
+
+        const STORAGE_KEY = "btr_briefing_destaque_turismo_v1";
+        let currentSectionIndex = 0;
+        let showAllMode = false;
+        let savedState = {
+            clientName: "",
+            clientContact: "",
+            answers: {},   // { 1: "texto", 2: "texto" }
+            chips: {}      // { 1: ["chip1", "chip2"] }
+        };
+
+        // Load from localStorage
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                savedState = Object.assign(savedState, JSON.parse(raw));
+            }
+        } catch (e) {
+            console.warn("Erro ao carregar rascunho:", e);
+        }
+
+        const saveToStorage = () => {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(savedState));
+                const indicator = document.getElementById("autosave-text");
+                if (indicator) {
+                    indicator.textContent = "Salvo agora ✓";
+                    setTimeout(() => { indicator.textContent = "Salvo no aparelho"; }, 2000);
+                }
+            } catch (e) {
+                console.warn("Erro ao salvar:", e);
+            }
+            updateProgress();
+        };
+
+        // Render UI
+        const pillsContainer = document.getElementById("section-pills");
+        const sectionsContainer = document.getElementById("sections-container");
+
+        function renderBriefing() {
+            // Restore client fields
+            const nameInput = document.getElementById("client-name");
+            const contactInput = document.getElementById("client-contact");
+            nameInput.value = savedState.clientName || "";
+            contactInput.value = savedState.clientContact || "";
+
+            nameInput.addEventListener("input", (e) => {
+                savedState.clientName = e.target.value;
+                saveToStorage();
+            });
+            contactInput.addEventListener("input", (e) => {
+                savedState.clientContact = e.target.value;
+                saveToStorage();
+            });
+
+            // Render Section Pills
+            pillsContainer.innerHTML = BRIEFING_SECTIONS.map((sec, idx) => `
+                <button type="button" class="section-pill ${idx === currentSectionIndex ? 'active' : ''}" data-index="${idx}" id="pill-${idx}">
+                    <i class="${sec.icon}"></i>
+                    <span>${sec.shortTitle}</span>
+                </button>
+            `).join('');
+
+            pillsContainer.querySelectorAll(".section-pill").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const idx = parseInt(btn.getAttribute("data-index"), 10);
+                    goToSection(idx, true);
+                });
+            });
+
+            // Render Sections & Questions
+            sectionsContainer.innerHTML = BRIEFING_SECTIONS.map((sec, idx) => {
+                const questionsHTML = sec.questions.map(item => {
+                    const selectedChips = savedState.chips[item.n] || [];
+                    const answerText = savedState.answers[item.n] || "";
+                    const isAnswered = selectedChips.length > 0 || answerText.trim().length > 0;
+
+                    const chipsHTML = item.chips && item.chips.length > 0 ? `
+                        <div class="quick-chips" data-q="${item.n}">
+                            ${item.chips.map(c => {
+                                const isSel = selectedChips.includes(c);
+                                return `<button type="button" class="chip-btn ${isSel ? 'selected' : ''}" data-chip="${c.replace(/"/g, '&quot;')}">${c}</button>`;
+                            }).join('')}
+                        </div>
+                    ` : '';
+
+                    return `
+                        <div class="question-card ${isAnswered ? 'answered' : ''}" id="qcard-${item.n}">
+                            <div class="question-header">
+                                <span class="q-number">${item.n}</span>
+                                <label class="q-title" for="q-input-${item.n}">${item.q}</label>
+                            </div>
+                            ${chipsHTML}
+                            <textarea
+                                id="q-input-${item.n}"
+                                class="q-textarea"
+                                data-q="${item.n}"
+                                rows="2"
+                                placeholder="${item.placeholder || 'Digite sua resposta ou observação aqui...'}"
+                            >${answerText}</textarea>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <section class="briefing-section ${idx === currentSectionIndex ? 'active' : ''}" id="section-${idx}">
+                        <div class="section-card-header">
+                            <div class="section-card-title-wrap">
+                                <div class="section-icon-box"><i class="${sec.icon}"></i></div>
+                                <div>
+                                    <h2>${sec.title}</h2>
+                                    <p>Perguntas ${sec.questions[0].n} a ${sec.questions[sec.questions.length - 1].n}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questions-list">
+                            ${questionsHTML}
+                        </div>
+
+                        <div class="wizard-controls">
+                            ${idx > 0 ? `
+                                <button type="button" class="btn btn-secondary btn-prev" data-target="${idx - 1}">
+                                    <i class="fa-solid fa-arrow-left"></i> Etapa Anterior
+                                </button>
+                            ` : `<div></div>`}
+
+                            ${idx < BRIEFING_SECTIONS.length - 1 ? `
+                                <button type="button" class="btn btn-primary btn-next" data-target="${idx + 1}">
+                                    Próxima Etapa (${idx + 2}/12) <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            ` : `
+                                <button type="button" class="btn btn-primary" onclick="document.getElementById('final-section').scrollIntoView({behavior:'smooth'})">
+                                    Finalizar e Enviar <i class="fa-solid fa-check-double"></i>
+                                </button>
+                            `}
+                        </div>
+                    </section>
+                `;
+            }).join('');
+
+            // Attach events for chips
+            document.querySelectorAll(".quick-chips .chip-btn").forEach(chipBtn => {
+                chipBtn.addEventListener("click", () => {
+                    const parent = chipBtn.closest(".quick-chips");
+                    const qNum = parent.getAttribute("data-q");
+                    const chipVal = chipBtn.getAttribute("data-chip");
+
+                    if (!savedState.chips[qNum]) savedState.chips[qNum] = [];
+                    const idx = savedState.chips[qNum].indexOf(chipVal);
+
+                    if (idx > -1) {
+                        savedState.chips[qNum].splice(idx, 1);
+                        chipBtn.classList.remove("selected");
+                    } else {
+                        savedState.chips[qNum].push(chipVal);
+                        chipBtn.classList.add("selected");
+                    }
+
+                    updateCardStatus(qNum);
+                    saveToStorage();
+                });
+            });
+
+            // Attach events for textareas
+            document.querySelectorAll(".q-textarea").forEach(ta => {
+                ta.addEventListener("input", () => {
+                    const qNum = ta.getAttribute("data-q");
+                    savedState.answers[qNum] = ta.value;
+                    updateCardStatus(qNum);
+                    saveToStorage();
+                });
+            });
+
+            // Attach wizard prev/next buttons
+            document.querySelectorAll(".btn-prev, .btn-next").forEach(navBtn => {
+                navBtn.addEventListener("click", () => {
+                    const targetIdx = parseInt(navBtn.getAttribute("data-target"), 10);
+                    goToSection(targetIdx, true);
+                });
+            });
+
+            updateProgress();
+        }
+
+        function updateCardStatus(qNum) {
+            const card = document.getElementById(`qcard-${qNum}`);
+            if (!card) return;
+            const hasChips = savedState.chips[qNum] && savedState.chips[qNum].length > 0;
+            const hasText = savedState.answers[qNum] && savedState.answers[qNum].trim().length > 0;
+            if (hasChips || hasText) {
+                card.classList.add("answered");
+            } else {
+                card.classList.remove("answered");
+            }
+        }
+
+        function goToSection(idx, scrollToTop = false) {
+            currentSectionIndex = idx;
+            document.querySelectorAll(".briefing-section").forEach((sec, i) => {
+                sec.classList.toggle("active", i === idx);
+            });
+            document.querySelectorAll(".section-pill").forEach((pill, i) => {
+                pill.classList.toggle("active", i === idx);
+            });
+
+            const activePill = document.getElementById(`pill-${idx}`);
+            if (activePill) {
+                activePill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+            }
+
+            const secObj = BRIEFING_SECTIONS[idx];
+            document.getElementById("current-section-label").textContent =
+                showAllMode ? "Visualizando Todas as 12 Etapas" : `Etapa ${idx + 1} de 12 • ${secObj.title.replace(/^\d+\.\s*/, '')}`;
+
+            if (scrollToTop) {
+                const navEl = document.querySelector(".section-nav-wrapper");
+                if (navEl) {
+                    const y = navEl.getBoundingClientRect().top + window.pageYOffset - 115;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                }
+            }
+        }
+
+        function updateProgress() {
+            let totalAnswered = 0;
+
+            BRIEFING_SECTIONS.forEach((sec, idx) => {
+                let secAnswered = 0;
+                sec.questions.forEach(item => {
+                    const hasChips = savedState.chips[item.n] && savedState.chips[item.n].length > 0;
+                    const hasText = savedState.answers[item.n] && savedState.answers[item.n].trim().length > 0;
+                    if (hasChips || hasText) {
+                        totalAnswered++;
+                        secAnswered++;
+                    }
+                });
+
+                const pill = document.getElementById(`pill-${idx}`);
+                if (pill) {
+                    if (secAnswered === sec.questions.length) {
+                        pill.classList.add("completed");
+                    } else {
+                        pill.classList.remove("completed");
+                    }
+                }
+            });
+
+            const pct = Math.round((totalAnswered / 85) * 100);
+            document.getElementById("answered-count").textContent = `${totalAnswered} / 85 (${pct}%)`;
+            document.getElementById("progress-fill").style.width = `${pct}%`;
+        }
+
+        // Toggle "Ver Todas" vs "Por Etapa"
+        document.getElementById("toggle-view-btn").addEventListener("click", () => {
+            showAllMode = !showAllMode;
+            document.body.classList.toggle("show-all-sections", showAllMode);
+            const btnText = document.getElementById("toggle-view-text");
+            btnText.textContent = showAllMode ? "Ver por Etapas" : "Ver Todas";
+            goToSection(currentSectionIndex, false);
+        });
+
+        // Build Formatted Answer Text
+        function getFormattedAnswers( itemNoQuestionText = false ) {
+            const lines = [];
+            lines.push("==========================================");
+            lines.push("BRIEFING — DESENVOLVIMENTO DE WEBSITE");
+            lines.push("Cliente: Destaque Turismo Viagens");
+            if (savedState.clientName) lines.push(`Responsável: ${savedState.clientName}`);
+            if (savedState.clientContact) lines.push(`Contato: ${savedState.clientContact}`);
+            lines.push("==========================================\n");
+
+            BRIEFING_SECTIONS.forEach(sec => {
+                lines.push(`\n*${sec.title.toUpperCase()}*`);
+                lines.push("------------------------------------------");
+                sec.questions.forEach(item => {
+                    const chips = savedState.chips[item.n] || [];
+                    const text = (savedState.answers[item.n] || "").trim();
+                    let combined = "";
+                    if (chips.length > 0 && text) {
+                        combined = `[${chips.join(", ")}] — ${text}`;
+                    } else if (chips.length > 0) {
+                        combined = chips.join(", ");
+                    } else if (text) {
+                        combined = text;
+                    } else {
+                        combined = "(Não respondida)";
+                    }
+                    lines.push(`${item.n}. ${item.q}\n   R: ${combined}\n`);
+                });
+            });
+
+            return lines.join("\n");
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById("toast");
+            document.getElementById("toast-text").textContent = msg;
+            t.classList.add("show");
+            setTimeout(() => t.classList.remove("show"), 3500);
+        }
+
+        // Copy All Answers
+        document.getElementById("btn-copy-all").addEventListener("click", () => {
+            const fullText = getFormattedAnswers();
+            navigator.clipboard.writeText(fullText).then(() => {
+                showToast("Todas as respostas foram copiadas!");
+            });
+        });
+
+        // Send via WhatsApp
+        function triggerWhatsApp() {
+            const fullText = getFormattedAnswers();
+            // Copy full text to clipboard first so nothing gets truncated if long
+            navigator.clipboard.writeText(fullText).catch(() => {});
+
+            // Build concise WhatsApp summary or full answered items
+            const answeredLines = [];
+            answeredLines.push("*BRIEFING — DESTAQUE TURISMO VIAGENS*");
+            if (savedState.clientName) answeredLines.push(`*Responsável:* ${savedState.clientName}`);
+            if (savedState.clientContact) answeredLines.push(`*Contato:* ${savedState.clientContact}`);
+            answeredLines.push("");
+
+            BRIEFING_SECTIONS.forEach(sec => {
+                const secAns = [];
+                sec.questions.forEach(item => {
+                    const chips = savedState.chips[item.n] || [];
+                    const text = (savedState.answers[item.n] || "").trim();
+                    if (chips.length > 0 || text) {
+                        const val = chips.length > 0 && text ? `${chips.join(", ")} (${text})` : (chips.join(", ") || text);
+                        secAns.push(`*${item.n}.* ${val}`);
+                    }
+                });
+                if (secAns.length > 0) {
+                    answeredLines.push(`*${sec.shortTitle}*`);
+                    answeredLines.push(...secAns);
+                    answeredLines.push("");
+                }
+            });
+
+            const waMessage = answeredLines.join("\n");
+            const waUrl = `https://wa.me/5519996900426?text=${encodeURIComponent(waMessage.substring(0, 3800))}`;
+            window.open(waUrl, "_blank");
+        }
+
+        document.getElementById("btn-submit-whatsapp").addEventListener("click", triggerWhatsApp);
+        document.getElementById("modal-whatsapp-btn").addEventListener("click", triggerWhatsApp);
+
+        // Submit directly via FormSubmit to beatriztrizzo@gmail.com
+        document.getElementById("btn-submit-email").addEventListener("click", () => {
+            const btn = document.getElementById("btn-submit-email");
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Enviando respostas...`;
+
+            const payload = {
+                _subject: `Novo Briefing Respondido — Destaque Turismo Viagens (${savedState.clientName || 'Cliente'})`,
+                Responsavel: savedState.clientName || "Não informado",
+                Contato: savedState.clientContact || "Não informado",
+                Resumo_Completo: getFormattedAnswers()
+            };
+
+            // Add each answered question as individual field for clean email table
+            BRIEFING_SECTIONS.forEach(sec => {
+                sec.questions.forEach(item => {
+                    const chips = savedState.chips[item.n] || [];
+                    const text = (savedState.answers[item.n] || "").trim();
+                    if (chips.length > 0 || text) {
+                        payload[`P${String(item.n).padStart(2, '0')} - ${item.q.substring(0, 55)}`] =
+                            chips.length > 0 && text ? `[${chips.join(", ")}] ${text}` : (chips.join(", ") || text);
+                    }
+                });
+            });
+
+            fetch("https://formsubmit.co/ajax/beatriztrizzo@gmail.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+                document.getElementById("success-modal").classList.add("active");
+            })
+            .catch(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+                document.getElementById("modal-msg").textContent =
+                    "Suas respostas estão salvas! Clique no botão abaixo para enviá-las diretamente no WhatsApp da Beatriz:";
+                document.getElementById("success-modal").classList.add("active");
+            });
+        });
+
+        document.getElementById("modal-close-btn").addEventListener("click", () => {
+            document.getElementById("success-modal").classList.remove("active");
+        });
+
+        // Init
+        renderBriefing();
+    </script>
+</body>
+</html>
+
