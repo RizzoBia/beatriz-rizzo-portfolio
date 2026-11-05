@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jsPDF para geração real e download direto do arquivo PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         /* ==========================================================================
@@ -897,47 +899,80 @@
         }
 
         /* ==========================================================================
-           ESTILO DE IMPRESSÃO / SALVAR COMO PDF (CLEAN E COMPLETO)
+           RELATÓRIO DE IMPRESSÃO / SALVAR COMO PDF (CLEAN E COMPLETO)
            ========================================================================== */
+        #print-report-container {
+            display: none;
+        }
+
         @media print {
             body {
                 background: #ffffff !important;
                 color: #0f172a !important;
                 padding: 0 !important;
+                font-size: 12pt;
             }
-            .bg-glow, .top-header, .section-nav-wrapper, .wizard-controls, .quick-chips, .submit-actions-grid, .hero-tip, .modal-overlay, .toast {
+            .bg-glow, .top-header, main.container, .modal-overlay, .toast {
                 display: none !important;
             }
-            .container {
-                max-width: 100% !important;
-                padding: 0 10mm !important;
-            }
-            .briefing-section {
+            #print-report-container {
                 display: block !important;
-                margin-bottom: 18px !important;
+                width: 100%;
+                padding: 8mm 10mm;
+                color: #0f172a;
+                font-family: 'Inter', Arial, sans-serif;
+            }
+            .print-header {
+                border-bottom: 2px solid #4f46e5;
+                padding-bottom: 12px;
+                margin-bottom: 18px;
+            }
+            .print-header h1 {
+                font-size: 20pt;
+                color: #0f172a;
+                margin-bottom: 4px;
+            }
+            .print-header p {
+                font-size: 10.5pt;
+                color: #475569;
+                margin: 2px 0;
+            }
+            .print-sec-title {
+                background: #f1f5f9;
+                border-left: 4px solid #4f46e5;
+                padding: 8px 12px;
+                font-size: 13pt;
+                font-weight: 700;
+                color: #1e293b;
+                margin: 18px 0 10px;
+                page-break-after: avoid;
+            }
+            .print-q-item {
+                border-bottom: 1px solid #e2e8f0;
+                padding: 8px 0;
                 page-break-inside: avoid;
             }
-            .hero-card, .section-card-header, .question-card, .next-steps-card {
-                background: #ffffff !important;
-                color: #0f172a !important;
-                border: 1px solid #cbd5e1 !important;
-                box-shadow: none !important;
-                margin-bottom: 10px !important;
-                padding: 12px 14px !important;
+            .print-q-title {
+                font-weight: 600;
+                font-size: 10.5pt;
+                color: #0f172a;
+                margin-bottom: 4px;
             }
-            .hero-title, .section-card-header h2, .q-title, .next-steps-title {
-                color: #0f172a !important;
-                -webkit-text-fill-color: #0f172a !important;
+            .print-q-answer {
+                font-size: 10.5pt;
+                color: #1e293b;
+                background: #f8fafc;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                padding: 6px 10px;
+                white-space: pre-wrap;
             }
-            .hero-client, .q-number {
-                color: #4f46e5 !important;
-                border-color: #4f46e5 !important;
-            }
-            .q-textarea, .input-styled {
-                background: #f8fafc !important;
-                color: #0f172a !important;
-                border: 1px solid #cbd5e1 !important;
-                min-height: 38px !important;
+            .print-q-answer.empty {
+                color: #94a3b8;
+                font-style: italic;
+                background: transparent;
+                border: none;
+                padding: 2px 0;
             }
         }
     </style>
@@ -1057,7 +1092,7 @@
 
             <div class="submit-actions-grid">
                 <button type="button" class="btn btn-primary" id="btn-submit-email">
-                    <i class="fa-solid fa-paper-plane"></i> Enviar Respostas Agora
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Respostas por E-mail
                 </button>
                 <button type="button" class="btn btn-whatsapp" id="btn-submit-whatsapp">
                     <i class="fa-brands fa-whatsapp"></i> Enviar via WhatsApp
@@ -1065,8 +1100,8 @@
                 <button type="button" class="btn btn-secondary" id="btn-copy-all">
                     <i class="fa-regular fa-copy"></i> Copiar Respostas
                 </button>
-                <button type="button" class="btn btn-secondary" onclick="window.print()">
-                    <i class="fa-solid fa-file-pdf"></i> Salvar / Imprimir PDF
+                <button type="button" class="btn btn-secondary" id="btn-download-pdf">
+                    <i class="fa-solid fa-file-pdf"></i> Baixar PDF Completo
                 </button>
             </div>
 
@@ -1086,18 +1121,24 @@
         </section>
     </main>
 
+    <!-- Relatório exclusivo para impressão / Ctrl+P -->
+    <div id="print-report-container"></div>
+
     <!-- Success Modal -->
     <div class="modal-overlay" id="success-modal">
         <div class="modal-card">
-            <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
-            <h3>Briefing Enviado com Sucesso!</h3>
-            <p id="modal-msg">Suas respostas foram registradas e enviadas para Beatriz Rizzo. Você também pode encaminhar uma cópia direta no WhatsApp ou baixar em PDF abaixo:</p>
+            <div class="modal-icon" id="modal-icon-box"><i class="fa-solid fa-check"></i></div>
+            <h3 id="modal-title">Briefing Enviado com Sucesso!</h3>
+            <p id="modal-msg">Suas respostas foram registradas e enviadas para o e-mail de Beatriz Rizzo. Você também pode encaminhar uma cópia direta no WhatsApp ou baixar em PDF abaixo:</p>
             <div class="modal-btn-stack">
                 <button type="button" class="btn btn-whatsapp" id="modal-whatsapp-btn">
                     <i class="fa-brands fa-whatsapp"></i> Confirmar e Enviar no WhatsApp
                 </button>
-                <button type="button" class="btn btn-secondary" onclick="window.print()">
-                    <i class="fa-solid fa-file-pdf"></i> Salvar Cópia em PDF
+                <button type="button" class="btn btn-secondary" id="modal-pdf-btn">
+                    <i class="fa-solid fa-file-pdf"></i> Baixar Cópia em PDF
+                </button>
+                <button type="button" class="btn btn-secondary" id="modal-mailto-btn" style="display: none;">
+                    <i class="fa-solid fa-envelope"></i> Abrir no Meu App de E-mail
                 </button>
                 <button type="button" class="btn btn-secondary" id="modal-close-btn">
                     Voltar ao Formulário
@@ -1601,6 +1642,208 @@
             setTimeout(() => t.classList.remove("show"), 3500);
         }
 
+        // Helper para obter a resposta combinada (chips + texto) de uma pergunta
+        function getQuestionAnswerText(qNum) {
+            const chips = savedState.chips[qNum] || [];
+            const text = (savedState.answers[qNum] || "").trim();
+            if (chips.length > 0 && text) {
+                return `[${chips.join(", ")}] — ${text}`;
+            } else if (chips.length > 0) {
+                return chips.join(", ");
+            } else if (text) {
+                return text;
+            }
+            return "";
+        }
+
+        // Preenche o container de impressão caso a pessoa use Ctrl+P no navegador
+        function populatePrintReport() {
+            const container = document.getElementById("print-report-container");
+            if (!container) return;
+
+            let totalAnswered = 0;
+            BRIEFING_SECTIONS.forEach(sec => {
+                sec.questions.forEach(item => {
+                    if (getQuestionAnswerText(item.n)) totalAnswered++;
+                });
+            });
+
+            const dateStr = new Date().toLocaleDateString("pt-BR", {
+                day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+            });
+
+            let html = `
+                <div class="print-header">
+                    <h1>Briefing — Destaque Turismo Viagens</h1>
+                    <p><strong>Desenvolvimento de Website</strong> • Responsável Técnica: Beatriz Rizzo</p>
+                    <p><strong>Responsável (Cliente):</strong> ${savedState.clientName || "Não informado"} &nbsp;|&nbsp; <strong>Contato:</strong> ${savedState.clientContact || "Não informado"}</p>
+                    <p><strong>Data de geração:</strong> ${dateStr} &nbsp;|&nbsp; <strong>Perguntas respondidas:</strong> ${totalAnswered} de 85</p>
+                </div>
+            `;
+
+            BRIEFING_SECTIONS.forEach(sec => {
+                html += `<div class="print-sec-title">${sec.title}</div>`;
+                sec.questions.forEach(item => {
+                    const ans = getQuestionAnswerText(item.n);
+                    const safeAns = ans
+                        ? ans.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+                        : "Não respondida";
+                    html += `
+                        <div class="print-q-item">
+                            <div class="print-q-title">${item.n}. ${item.q}</div>
+                            <div class="print-q-answer ${ans ? '' : 'empty'}">${safeAns}</div>
+                        </div>
+                    `;
+                });
+            });
+
+            container.innerHTML = html;
+        }
+
+        window.addEventListener("beforeprint", populatePrintReport);
+
+        // Gera e baixa o arquivo PDF real (.pdf) com jsPDF
+        function generateAndDownloadPDF() {
+            populatePrintReport();
+
+            if (!window.jspdf || !window.jspdf.jsPDF) {
+                window.print();
+                return;
+            }
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({ orientation: "p", unit: "mm", format: "a4" });
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const pageHeight = doc.internal.pageSize.getHeight();
+                const marginX = 14;
+                const maxLineWidth = pageWidth - marginX * 2;
+                let y = 16;
+
+                const checkPageBreak = (neededHeight) => {
+                    if (y + neededHeight > pageHeight - 15) {
+                        doc.addPage();
+                        y = 16;
+                    }
+                };
+
+                // Cabeçalho escuro/roxo
+                doc.setFillColor(18, 24, 36);
+                doc.rect(0, 0, pageWidth, 38, "F");
+                doc.setFillColor(139, 92, 246);
+                doc.rect(0, 38, pageWidth, 1.5, "F");
+
+                doc.setTextColor(255, 255, 255);
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(16);
+                doc.text("BRIEFING — DESTAQUE TURISMO VIAGENS", marginX, 14);
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(9.5);
+                doc.setTextColor(196, 181, 253);
+                doc.text("Planejamento, Arquitetura e Orcamento do Novo Website | Desenvolvedora: Beatriz Rizzo", marginX, 21);
+
+                const dateStr = new Date().toLocaleDateString("pt-BR");
+                const clientLine = `Responsavel: ${savedState.clientName || "Nao informado"}   |   Contato: ${savedState.clientContact || "Nao informado"}   |   Data: ${dateStr}`;
+                doc.setTextColor(226, 232, 240);
+                doc.text(clientLine, marginX, 29);
+
+                let totalAnswered = 0;
+                BRIEFING_SECTIONS.forEach(sec => {
+                    sec.questions.forEach(item => {
+                        if (getQuestionAnswerText(item.n)) totalAnswered++;
+                    });
+                });
+                doc.setTextColor(6, 182, 212);
+                doc.setFont("helvetica", "bold");
+                doc.text(`Progresso do preenchimento: ${totalAnswered} de 85 perguntas respondidas`, marginX, 35);
+
+                y = 47;
+
+                BRIEFING_SECTIONS.forEach(sec => {
+                    checkPageBreak(18);
+
+                    // Faixa de título da seção
+                    doc.setFillColor(241, 245, 249);
+                    doc.rect(marginX, y - 5, maxLineWidth, 9, "F");
+                    doc.setFillColor(139, 92, 246);
+                    doc.rect(marginX, y - 5, 2, 9, "F");
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(11);
+                    doc.setTextColor(30, 41, 59);
+                    doc.text(sec.title.toUpperCase(), marginX + 5, y + 1);
+                    y += 9;
+
+                    sec.questions.forEach(item => {
+                        const ans = getQuestionAnswerText(item.n);
+                        const questionText = `${item.n}. ${item.q}`;
+                        const answerText = ans ? `R: ${ans}` : "R: (Nao respondida)";
+
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(9.5);
+                        const qLines = doc.splitTextToSize(questionText, maxLineWidth - 2);
+
+                        doc.setFont("helvetica", ans ? "normal" : "italic");
+                        doc.setFontSize(9.5);
+                        const aLines = doc.splitTextToSize(answerText, maxLineWidth - 6);
+
+                        const blockHeight = (qLines.length * 4.3) + (aLines.length * 4.3) + 5;
+                        checkPageBreak(blockHeight);
+
+                        // Pergunta
+                        doc.setFont("helvetica", "bold");
+                        doc.setTextColor(15, 23, 42);
+                        doc.text(qLines, marginX, y);
+                        y += qLines.length * 4.3 + 1;
+
+                        // Resposta
+                        if (ans) {
+                            const boxH = aLines.length * 4.3 + 3;
+                            doc.setFillColor(248, 250, 252);
+                            doc.setDrawColor(203, 213, 225);
+                            doc.roundedRect(marginX + 2, y - 3.2, maxLineWidth - 2, boxH, 1.5, 1.5, "FD");
+                            doc.setFont("helvetica", "normal");
+                            doc.setTextColor(30, 41, 59);
+                            doc.text(aLines, marginX + 5, y + 0.5);
+                            y += boxH + 3.5;
+                        } else {
+                            doc.setFont("helvetica", "italic");
+                            doc.setTextColor(148, 163, 184);
+                            doc.text(aLines, marginX + 4, y);
+                            y += aLines.length * 4.3 + 2.5;
+                        }
+                    });
+
+                    y += 3;
+                });
+
+                // Rodapé com numeração de páginas
+                const pageCount = doc.internal.getNumberOfPages();
+                for (let i = 1; i <= pageCount; i++) {
+                    doc.setPage(i);
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(8);
+                    doc.setTextColor(148, 163, 184);
+                    doc.text(
+                        `Briefing Destaque Turismo Viagens • Beatriz Rizzo (beatriz-rizzo.vercel.app) • Pagina ${i} de ${pageCount}`,
+                        pageWidth / 2,
+                        pageHeight - 7,
+                        { align: "center" }
+                    );
+                }
+
+                doc.save("Briefing-Destaque-Turismo-Viagens.pdf");
+                showToast("PDF completo baixado com sucesso!");
+            } catch (err) {
+                console.error("Erro ao gerar PDF:", err);
+                window.print();
+            }
+        }
+
+        document.getElementById("btn-download-pdf").addEventListener("click", generateAndDownloadPDF);
+        document.getElementById("modal-pdf-btn").addEventListener("click", generateAndDownloadPDF);
+
         // Copy All Answers
         document.getElementById("btn-copy-all").addEventListener("click", () => {
             const fullText = getFormattedAnswers();
@@ -1625,11 +1868,9 @@
             BRIEFING_SECTIONS.forEach(sec => {
                 const secAns = [];
                 sec.questions.forEach(item => {
-                    const chips = savedState.chips[item.n] || [];
-                    const text = (savedState.answers[item.n] || "").trim();
-                    if (chips.length > 0 || text) {
-                        const val = chips.length > 0 && text ? `${chips.join(", ")} (${text})` : (chips.join(", ") || text);
-                        secAns.push(`*${item.n}.* ${val}`);
+                    const ans = getQuestionAnswerText(item.n);
+                    if (ans) {
+                        secAns.push(`*${item.n}.* ${ans}`);
                     }
                 });
                 if (secAns.length > 0) {
@@ -1647,51 +1888,91 @@
         document.getElementById("btn-submit-whatsapp").addEventListener("click", triggerWhatsApp);
         document.getElementById("modal-whatsapp-btn").addEventListener("click", triggerWhatsApp);
 
+        // Abre cliente de e-mail padrão como contingência direta
+        function triggerMailtoFallback() {
+            const subject = `Briefing Respondido — Destaque Turismo Viagens (${savedState.clientName || 'Cliente'})`;
+            const body = getFormattedAnswers();
+            const mailtoUrl = `mailto:beatriztrizzo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.substring(0, 1900))}`;
+            window.location.href = mailtoUrl;
+        }
+        document.getElementById("modal-mailto-btn").addEventListener("click", triggerMailtoFallback);
+
         // Submit directly via FormSubmit to beatriztrizzo@gmail.com
         document.getElementById("btn-submit-email").addEventListener("click", () => {
             const btn = document.getElementById("btn-submit-email");
             const originalHTML = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Enviando respostas...`;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Enviando para o e-mail...`;
 
-            const payload = {
-                _subject: `Novo Briefing Respondido — Destaque Turismo Viagens (${savedState.clientName || 'Cliente'})`,
-                Responsavel: savedState.clientName || "Não informado",
-                Contato: savedState.clientContact || "Não informado",
-                Resumo_Completo: getFormattedAnswers()
-            };
+            // Monta FormData com chaves limpas (sem caracteres especiais que o FormSubmit bloqueia)
+            const formData = new FormData();
+            formData.append("_subject", `Novo Briefing Respondido — Destaque Turismo Viagens (${savedState.clientName || "Cliente"})`);
+            formData.append("_captcha", "false");
+            formData.append("_template", "table");
+            formData.append("Cliente", "Destaque Turismo Viagens");
+            formData.append("Responsavel", savedState.clientName || "Não informado");
+            formData.append("Contato", savedState.clientContact || "Não informado");
 
-            // Add each answered question as individual field for clean email table
+            // Agrupa as respostas por seção (12 campos limpos em vez de 85 chaves com pontuação)
             BRIEFING_SECTIONS.forEach(sec => {
+                const secLines = [];
                 sec.questions.forEach(item => {
-                    const chips = savedState.chips[item.n] || [];
-                    const text = (savedState.answers[item.n] || "").trim();
-                    if (chips.length > 0 || text) {
-                        payload[`P${String(item.n).padStart(2, '0')} - ${item.q.substring(0, 55)}`] =
-                            chips.length > 0 && text ? `[${chips.join(", ")}] ${text}` : (chips.join(", ") || text);
+                    const ans = getQuestionAnswerText(item.n);
+                    if (ans) {
+                        secLines.push(`P${item.n} (${item.q}): ${ans}`);
                     }
                 });
+                const cleanKey = `Etapa_${String(sec.id).padStart(2, "0")}_${sec.shortTitle.replace(/[^a-zA-Z0-9]/g, "")}`;
+                formData.append(cleanKey, secLines.length > 0 ? secLines.join(" | ") : "(Nenhuma pergunta respondida nesta etapa)");
             });
+
+            formData.append("Relatorio_Completo", getFormattedAnswers());
+
+            // Se aberto via file:// no computador, avisa que precisa estar em http/https ou usar WhatsApp/PDF
+            if (window.location.protocol === "file:") {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+                document.getElementById("modal-title").textContent = "Respostas Prontas para Envio!";
+                document.getElementById("modal-msg").textContent =
+                    "Como o arquivo foi aberto localmente no computador (file://), o navegador bloqueia o disparo automático de e-mail. Use os botões abaixo para baixar o PDF completo, enviar pelo WhatsApp ou abrir seu app de E-mail:";
+                document.getElementById("modal-mailto-btn").style.display = "inline-flex";
+                document.getElementById("success-modal").classList.add("active");
+                return;
+            }
 
             fetch("https://formsubmit.co/ajax/beatriztrizzo@gmail.com", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: JSON.stringify(payload)
+                body: formData
             })
             .then(res => res.json())
-            .then(() => {
+            .then(data => {
                 btn.disabled = false;
                 btn.innerHTML = originalHTML;
+
+                if (data && (data.success === "true" || data.success === true)) {
+                    document.getElementById("modal-title").textContent = "Briefing Enviado por E-mail!";
+                    document.getElementById("modal-msg").textContent =
+                        "Suas respostas foram enviadas com sucesso para o e-mail de Beatriz Rizzo (beatriztrizzo@gmail.com)! Você também pode baixar uma cópia em PDF ou confirmar pelo WhatsApp abaixo:";
+                    document.getElementById("modal-mailto-btn").style.display = "none";
+                } else {
+                    document.getElementById("modal-title").textContent = "Quase lá! Confirme o envio abaixo";
+                    document.getElementById("modal-msg").textContent =
+                        (data && data.message ? `Aviso do servidor de e-mail: "${data.message}". ` : "") +
+                        "Suas respostas estão salvas! Clique abaixo para baixar o PDF completo ou encaminhar diretamente no WhatsApp da Beatriz:";
+                    document.getElementById("modal-mailto-btn").style.display = "inline-flex";
+                }
                 document.getElementById("success-modal").classList.add("active");
             })
             .catch(() => {
                 btn.disabled = false;
                 btn.innerHTML = originalHTML;
+                document.getElementById("modal-title").textContent = "Respostas Salvas!";
                 document.getElementById("modal-msg").textContent =
-                    "Suas respostas estão salvas! Clique no botão abaixo para enviá-las diretamente no WhatsApp da Beatriz:";
+                    "Suas respostas estão salvas! Clique abaixo para baixar o PDF completo ou enviá-las diretamente no WhatsApp / E-mail da Beatriz:";
+                document.getElementById("modal-mailto-btn").style.display = "inline-flex";
                 document.getElementById("success-modal").classList.add("active");
             });
         });
