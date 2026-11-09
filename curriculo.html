@@ -11,26 +11,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0f172a;
-      /* Slate 900 */
-      --secondary-color: #475569;
-      /* Slate 600 */
-      --accent-color: #2563eb;
-      /* Blue 600 */
-      --text-color: #334155;
-      /* Slate 700 */
-      --border-color: #e2e8f0;
-      /* Slate 200 */
-      --sidebar-bg: #f8fafc;
-      /* Slate 50 */
-      --badge-bg: #f1f5f9;
-      /* Slate 100 */
-      --badge-text: #334155;
-      /* Slate 700 */
+      --primary-color: #0f172a; /* Slate 900 */
+      --secondary-color: #475569; /* Slate 600 */
+      --accent-color: #2563eb; /* Blue 600 */
+      --text-color: #334155; /* Slate 700 */
+      --border-color: #e2e8f0; /* Slate 200 */
+      --sidebar-bg: #f8fafc; /* Slate 50 */
+      --badge-bg: #f1f5f9; /* Slate 100 */
+      --badge-text: #334155; /* Slate 700 */
 
       --spacing-sm: 6px;
-      --spacing-md: 12px;
-      --spacing-lg: 20px;
+      --spacing-md: 11px;
+      --spacing-lg: 18px;
     }
 
     * {
@@ -42,15 +34,14 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #cbd5e1;
-      /* Gray slate for backdrop */
       color: var(--text-color);
       line-height: 1.4;
       -webkit-font-smoothing: antialiased;
-      padding: 40px 0;
+      padding: 30px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 25px;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -90,7 +81,7 @@
     .resume-pages-container {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 25px;
       outline: none;
     }
 
@@ -99,21 +90,21 @@
       background-color: #ffffff;
       width: 210mm;
       height: 297mm;
-      padding: 15mm 15mm;
+      padding: 13mm 14mm;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
       position: relative;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 24px;
+      grid-template-columns: 205px 1fr;
+      gap: 22px;
       overflow: hidden;
     }
 
     /* Left Sidebar */
     .sidebar {
       border-right: 1px solid var(--border-color);
-      padding-right: 20px;
+      padding-right: 18px;
       display: flex;
       flex-direction: column;
       gap: var(--spacing-lg);
@@ -131,14 +122,14 @@
       grid-column: 1 / -1;
       border-bottom: 2px solid var(--primary-color);
       padding-bottom: var(--spacing-md);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
 
     .header-left h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--primary-color);
       letter-spacing: -0.5px;
@@ -147,7 +138,7 @@
     }
 
     .header-left .subtitle {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
       color: var(--accent-color);
       text-transform: uppercase;
@@ -156,18 +147,18 @@
     }
 
     .header-left .sub-headline {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--secondary-color);
       letter-spacing: 0.5px;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      font-size: 12px;
+      gap: 4px;
+      font-size: 11.5px;
       color: var(--secondary-color);
       align-items: flex-end;
       text-align: right;
@@ -182,8 +173,8 @@
     }
 
     .contact-item svg {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       fill: var(--secondary-color);
     }
 
@@ -199,25 +190,25 @@
 
     /* Section Styling */
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-color);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       border-bottom: 1.5px solid var(--primary-color);
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       margin-bottom: var(--spacing-md);
     }
 
     .sidebar .section-title {
       border-bottom: 1.5px solid var(--border-color);
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       margin-bottom: var(--spacing-md);
     }
 
     /* Profile text */
     .profile-text {
-      font-size: 12.5px;
+      font-size: 11.8px;
       color: var(--text-color);
       text-align: justify;
       line-height: 1.5;
@@ -227,28 +218,28 @@
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 15px;
     }
 
     .experience-item {
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .experience-header {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .role-company {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-color);
     }
 
     .role-company span {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--accent-color);
     }
 
@@ -264,21 +255,22 @@
     }
 
     .experience-bullets li {
-      font-size: 12px;
+      font-size: 11.5px;
       position: relative;
       padding-left: 12px;
-      margin-bottom: 5px;
+      margin-bottom: 4.5px;
       color: var(--text-color);
       text-align: justify;
+      line-height: 1.45;
     }
 
     .experience-bullets li::before {
-      content: "▪";
+      content: "•";
       color: var(--accent-color);
-      font-size: 9px;
+      font-size: 10px;
       position: absolute;
       left: 0;
-      top: 0.5px;
+      top: 0px;
     }
 
     .experience-bullets li strong {
@@ -287,18 +279,18 @@
 
     /* Project styling */
     .project-item {
-      margin-bottom: 12px;
+      margin-bottom: 4px;
     }
 
     .project-header {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .project-title {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-color);
     }
@@ -310,10 +302,11 @@
     }
 
     .project-desc {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-color);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       text-align: justify;
+      line-height: 1.45;
     }
 
     .project-bullets {
@@ -321,45 +314,46 @@
     }
 
     .project-bullets li {
-      font-size: 12px;
+      font-size: 11.5px;
       position: relative;
       padding-left: 12px;
-      margin-bottom: 4px;
+      margin-bottom: 3.5px;
       color: var(--text-color);
+      line-height: 1.4;
     }
 
     .project-bullets li::before {
-      content: "▪";
+      content: "•";
       color: var(--accent-color);
-      font-size: 9px;
+      font-size: 10px;
       position: absolute;
       left: 0;
-      top: 0.5px;
+      top: 0px;
     }
 
     /* Education */
     .education-item {
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     .education-title {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--primary-color);
       line-height: 1.3;
     }
 
     .education-subtitle {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--secondary-color);
       font-weight: 500;
       margin-top: 2px;
     }
 
     .education-date {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--secondary-color);
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     /* Certifications */
@@ -367,35 +361,35 @@
       list-style-type: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .cert-list li {
-      font-size: 12px;
+      font-size: 11.2px;
       position: relative;
-      padding-left: 12px;
-      line-height: 1.3;
+      padding-left: 11px;
+      line-height: 1.35;
     }
 
     .cert-list li::before {
-      content: "▪";
+      content: "•";
       color: var(--accent-color);
-      font-size: 8px;
+      font-size: 9px;
       position: absolute;
       left: 0;
-      top: 2px;
+      top: 1px;
     }
 
     /* Skills block */
     .skills-category {
-      margin-bottom: 14px;
+      margin-bottom: 11px;
     }
 
     .skills-category-title {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--primary-color);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -403,14 +397,14 @@
     .skills-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
+      gap: 4px;
     }
 
     .skill-tag {
-      font-size: 10.5px;
+      font-size: 10px;
       background-color: var(--badge-bg);
       color: var(--badge-text);
-      padding: 3px 6px;
+      padding: 2.5px 6px;
       border-radius: 4px;
       font-weight: 500;
       border: 1px solid var(--border-color);
@@ -420,11 +414,11 @@
     .languages-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .language-item {
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
     .language-item strong {
@@ -475,7 +469,7 @@
 
   <!-- Floating Editor Banner -->
   <div class="edit-banner">
-    <span>✍️ <strong>Modo de Edição Ativo:</strong> Sinta-se livre para ajustar o texto e depois salvar!</span>
+    <span>💡 <strong>Modo de Edição Ativo:</strong> Sinta-se livre para ajustar o texto e depois salvar!</span>
     <button onclick="window.print()">Salvar como PDF (Ctrl + P)</button>
   </div>
 
@@ -487,8 +481,8 @@
       <header>
         <div class="header-left">
           <h1>Beatriz Tomei Rizzo</h1>
-          <div class="subtitle">Desenvolvedora de Software | Engenharia de Dados</div>
-          <div class="sub-headline">Python • SQL • C# • FastAPI • PostgreSQL</div>
+          <div class="subtitle">Desenvolvedora Full Stack</div>
+          <div class="sub-headline">React • TypeScript • Go • Vite • C#/.NET • Python • PostgreSQL • Supabase • Deno</div>
         </div>
         <div class="contact-info">
           <div class="contact-item">
@@ -535,53 +529,61 @@
           <div class="section-title">Competências</div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Linguagens</div>
+            <div class="skills-category-title">Front-end</div>
             <div class="skills-tags">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">C#</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Vite</span>
               <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML5 / CSS3</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">jQuery</span>
             </div>
           </div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Banco de Dados</div>
+            <div class="skills-category-title">Back-end & APIs</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Go (Golang)</span>
+              <span class="skill-tag">C# / .NET Core</span>
+              <span class="skill-tag">ASP.NET Core (MVC/Web Forms)</span>
+              <span class="skill-tag">Deno</span>
+              <span class="skill-tag">Python / FastAPI</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">APIs REST</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Banco de Dados & BaaS</div>
             <div class="skills-tags">
               <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Supabase</span>
               <span class="skill-tag">SQL Server</span>
               <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">Supabase</span>
+              <span class="skill-tag">MongoDB</span>
             </div>
           </div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Engenharia de Dados</div>
+            <div class="skills-category-title">Marketplaces & Fiscais</div>
             <div class="skills-tags">
-              <span class="skill-tag">ETL / ELT</span>
-              <span class="skill-tag">FastAPI</span>
-              <span class="skill-tag">Pandas</span>
-              <span class="skill-tag">APIs REST</span>
-              <span class="skill-tag">Integração de Sistemas</span>
-              <span class="skill-tag">Modelagem de Dados</span>
-              <span class="skill-tag">Regex</span>
+              <span class="skill-tag">Mercado Livre / TikTok / Amazon</span>
+              <span class="skill-tag">Pedidos & Faturamento</span>
+              <span class="skill-tag">Precificação & Fiscal</span>
+              <span class="skill-tag">NFSe (SIMPLISS)</span>
+              <span class="skill-tag">Conciliação Financeira</span>
             </div>
           </div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Desenvolvimento</div>
+            <div class="skills-category-title">BI, Dados & DevOps</div>
             <div class="skills-tags">
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">GitHub</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">React</span>
-            </div>
-          </div>
-
-          <div class="skills-category">
-            <div class="skills-category-title">Metodologias</div>
-            <div class="skills-tags">
+              <span class="skill-tag">Power BI (DAX / Power Query)</span>
+              <span class="skill-tag">Git & GitHub</span>
               <span class="skill-tag">Kanban</span>
-              <span class="skill-tag">Metodologias Ágeis</span>
+              <span class="skill-tag">Automação</span>
             </div>
           </div>
         </div>
@@ -602,57 +604,41 @@
         <section>
           <div class="section-title">Perfil Profissional</div>
           <p class="profile-text">
-            Desenvolvedora de Software com experiência em desenvolvimento de APIs, integração de sistemas, automação de
-            processos e engenharia de dados. Atuação em construção de pipelines ETL, modelagem de bancos de dados e
-            desenvolvimento de soluções orientadas a dados utilizando Python, SQL, C# e FastAPI.
+            Desenvolvedora Full Stack com atuação no desenvolvimento e evolução de sistemas web, plataformas voltadas à gestão de marketplaces e sistemas corporativos/tributários (NFSe). Experiência prática com React, TypeScript, Go, Vite, C# (.NET Core / ASP.NET Core), Python, Deno, PostgreSQL, Supabase e SQL Server, desenvolvendo integrações com Mercado Livre, TikTok e Amazon, soluções para pedidos, faturamento, precificação, processos fiscais e conciliação de dados financeiros e operacionais com foco em automação, performance e segurança.
           </p>
         </section>
 
-        <!-- Projetos -->
-        <section>
-          <div class="section-title">Projetos</div>
-          <div class="project-item">
-            <div class="project-header">
-              <div class="project-title">DEDO DURO 2.0 – Plataforma de Sellout Multicanal</div>
-              <div class="project-tech">Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex</div>
-            </div>
-            <p class="project-desc">
-              Plataforma de inteligência comercial responsável pela consolidação, normalização e análise de dados de
-              vendas, estoque e reposição de marketplaces como Mercado Livre, Amazon, Shopee e Magalu.
-            </p>
-            <div
-              style="font-size: 12px; font-weight: 700; color: var(--primary-color); margin-top: 6px; margin-bottom: 4px;">
-              Resultados:</div>
-            <ul class="project-bullets">
-              <li>Consolidação de mais de <strong>100.000 registros históricos</strong>.</li>
-              <li>Normalização de mais de <strong>15.000 SKUs/produtos</strong>.</li>
-              <li>Automatização do acompanhamento de vendas, estoque e reposição.</li>
-              <li>Centralização de dados de múltiplos marketplaces.</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Experiência 1 -->
+        <!-- Experiência Page 1 -->
         <section>
           <div class="section-title">Experiência Profissional</div>
           <div class="experience-list">
+
+            <!-- Alcavie Systems -->
             <div class="experience-item">
               <div class="experience-header">
-                <div class="role-company">Desenvolvedora de Software / Engenharia de Dados <span>| Grupo Sandrini</span>
-                </div>
-                <div class="date-location">02/2026 – Atual • São João da Boa Vista, SP</div>
+                <div class="role-company">Desenvolvedora Full Stack <span>| Alcavie Systems · Tempo integral</span></div>
+                <div class="date-location">09/2026 – O momento • São João da Boa Vista, SP (Presencial)</div>
               </div>
               <ul class="experience-bullets">
-                <li><strong>APIs & ETL</strong>: Construção de pipelines com Python (Pandas/FastAPI) e PostgreSQL
-                  (Supabase).</li>
-                <li><strong>Integração & Parser</strong>: Conexão com APIs de marketplaces (Mercado Livre) e
-                  normalização de SKUs via Regex.</li>
-                <li><strong>Modelagem de Dados</strong>: Arquitetura Medalhão (Bronze/Silver), views e índices para
-                  otimização de consultas.</li>
-                <li><strong>Dashboards</strong>: Desenvolvimento em React e Streamlit para visualização de sellout e
-                  faturamento.</li>
+                <li>Atuo como Programadora Júnior no desenvolvimento e evolução de sistemas voltados à gestão de marketplaces, integrando APIs, dados e regras de negócio.</li>
+                <li>Trabalho com <strong>React, TypeScript, Go, Vite, PostgreSQL, Supabase e Deno</strong>, desenvolvendo funcionalidades e integrações com <strong>Mercado Livre, TikTok e Amazon</strong>, além de soluções para gestão de pedidos, faturamento, precificação e processos fiscais.</li>
+                <li>Atuação na análise e conciliação de dados financeiros e operacionais, com foco em automação, performance, segurança e confiabilidade das informações.</li>
               </ul>
             </div>
+
+            <!-- Grupo Sandrini -->
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Analista de Dados & Desenvolvedora Full Stack <span>| Grupo Sandrini · Tempo integral</span></div>
+                <div class="date-location">02/2026 – 09/2026 (8 meses) • São João da Boa Vista, SP (Presencial)</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Desenvolvimento e evolução de sistemas voltados à gestão de marketplaces, integrando APIs, dados e regras de negócio.</li>
+                <li>Desenvolvimento de funcionalidades e integrações com <strong>Mercado Livre, TikTok e Amazon</strong> (gestão de pedidos, faturamento, precificação e processos fiscais) utilizando <strong>React, TypeScript, Go, Python (FastAPI), Vite, PostgreSQL, Supabase e Deno</strong>.</li>
+                <li>Análise e conciliação de dados financeiros e operacionais, com foco em automação, performance, segurança e confiabilidade das informações.</li>
+              </ul>
+            </div>
+
           </div>
         </section>
       </div>
@@ -685,14 +671,25 @@
           </ul>
         </div>
 
+        <!-- Metodologias & Práticas -->
+        <div>
+          <div class="section-title">Metodologias & Práticas</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Scrum</span>
+            <span class="skill-tag">Kanban</span>
+            <span class="skill-tag">Metodologias Ágeis</span>
+            <span class="skill-tag">Clean Code</span>
+            <span class="skill-tag">CI/CD</span>
+          </div>
+        </div>
+
         <!-- Conhecimentos Complementares -->
         <div>
           <div class="section-title">Tecnologias Complementares</div>
           <div class="skills-tags">
             <span class="skill-tag">PHP</span>
-            <span class="skill-tag">MongoDB</span>
             <span class="skill-tag">Bootstrap</span>
-            <span class="skill-tag">Tailwind</span>
+            <span class="skill-tag">jQuery</span>
             <span class="skill-tag">DAX</span>
             <span class="skill-tag">Power Query</span>
           </div>
@@ -701,57 +698,63 @@
 
       <!-- Main Column Page 2 -->
       <div class="main-content">
+
+        <!-- Projetos em Destaque -->
+        <section>
+          <div class="section-title">Projetos em Destaque</div>
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">DEDO DURO 2.0 – Plataforma de Sellout Multicanal</div>
+              <div class="project-tech">Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex</div>
+            </div>
+            <p class="project-desc">
+              Plataforma de inteligência comercial responsável pela consolidação, normalização e análise de dados de vendas, estoque e reposição de marketplaces como Mercado Livre, Amazon, Shopee e Magalu.
+            </p>
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--primary-color); margin-top: 4px; margin-bottom: 3px;">
+              Resultados:
+            </div>
+            <ul class="project-bullets">
+              <li>Consolidação de mais de <strong>100.000 registros históricos</strong> de vendas e estoques.</li>
+              <li>Normalização e parsing inteligente de mais de <strong>15.000 SKUs/produtos</strong>.</li>
+              <li>Automatização do acompanhamento diário de estoque, sellout e previsão de reposição.</li>
+              <li>Centralização de dados estratégicos de múltiplos marketplaces em base analítica única.</li>
+            </ul>
+          </div>
+        </section>
+
         <!-- Experiências Restantes -->
         <section>
-          <div class="section-title">Experiência Profissional (Cont.)</div>
+          <div class="section-title">Experiência Profissional (Histórico)</div>
           <div class="experience-list">
 
             <!-- Experiência 2 -->
             <div class="experience-item">
               <div class="experience-header">
-                <div class="role-company">Desenvolvedora Full Stack <span>| Simpliss Sistemas de Informação</span></div>
-                <div class="date-location">02/2025 – 02/2026 • São João da Boa Vista, SP</div>
+                <div class="role-company">Desenvolvedora Full Stack <span>| Simpliss Sistemas de Informação · Estágio</span></div>
+                <div class="date-location">01/2025 – 02/2026 (1 ano e 2 meses) • São João da Boa Vista, SP (Presencial)</div>
               </div>
               <ul class="experience-bullets">
-                <li><strong>Desenvolvimento C#</strong>: APIs REST corporativas usando .NET Core e ASP.NET Core.</li>
-                <li><strong>Banco de Dados & Segurança</strong>: Integrações com SQL Server/PostgreSQL e segurança a
-                  nível de linha (RLS).</li>
-                <li><strong>Sustentação</strong>: Depuração de logs e refatoração de código legado para melhoria de
-                  estabilidade.</li>
-                <li><strong>Metodologia</strong>: Gestão e priorização de tarefas em fluxo de trabalho Kanban.</li>
+                <li>Desenvolvimento e manutenção de sistemas web com <strong>C#, .NET Core, ASP.NET Core (MVC/Web Forms), SQL Server, PostgreSQL, JavaScript e Bootstrap</strong>, com atuação em sistemas de gestão tributária municipal e <strong>NFSe (padrão SIMPLISS)</strong>.</li>
+                <li>Suporte técnico e resolução de chamados (incidentes, requisições e melhorias), implementação de melhorias em sistemas legados, refatoração de código, análise de performance, resolução de bugs e gerenciamento de backlog com <strong>Kanban</strong>.</li>
+                <li>Responsável pelo desenvolvimento, manutenção e administração completa da infraestrutura de <strong>Power BI</strong> na empresa: modelagem de dados (Power Query, DAX), integração com múltiplas fontes, criação de dashboards estratégicos, automatização de atualizações/datasets e governança de workspaces e permissões.</li>
               </ul>
             </div>
 
             <!-- Experiência 3 -->
             <div class="experience-item">
               <div class="experience-header">
-                <div class="role-company">Desenvolvedora Full Stack (Freelance) <span>| HubControl</span></div>
-                <div class="date-location">09/2024 – 12/2024 • São João da Boa Vista, SP</div>
+                <div class="role-company">Desenvolvedora Web <span>| HubControl · Freelance</span></div>
+                <div class="date-location">09/2024 – 12/2024 (4 meses) • São João da Boa Vista, SP (Remoto)</div>
               </div>
               <ul class="experience-bullets">
-                <li><strong>Web Frontend/Backend</strong>: Desenvolvimento de páginas responsivas em PHP, JavaScript,
-                  Bootstrap e jQuery.</li>
-                <li><strong>Persistência</strong>: Manipulação e consultas em bancos relacionais e não-relacionais
-                  (MySQL e MongoDB).</li>
-              </ul>
-            </div>
-
-            <!-- Experiência 4 -->
-            <div class="experience-item">
-              <div class="experience-header">
-                <div class="role-company">Auxiliar Administrativo (Foco em Dados) <span>| Relume Iluminação</span></div>
-                <div class="date-location">07/2023 – 09/2024 • São João da Boa Vista, SP</div>
-              </div>
-              <ul class="experience-bullets">
-                <li><strong>BI & Analytics</strong>: Relatórios de faturamento e dashboards comerciais com Power BI e
-                  Excel.</li>
-                <li><strong>Auditoria de Estoque</strong>: Conciliação de inventário físico e digital em sistemas ERP.
-                </li>
+                <li>Criação de funcionalidades com <strong>PHP, HTML, CSS e JavaScript</strong> e implementação de layouts com <strong>Bootstrap e jQuery</strong>.</li>
+                <li>Manipulação e manutenção de dados em bancos relacionais e não-relacionais (<strong>MySQL e MongoDB</strong>).</li>
               </ul>
             </div>
 
           </div>
         </section>
+
       </div>
     </div>
 

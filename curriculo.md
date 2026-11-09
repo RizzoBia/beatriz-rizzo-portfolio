@@ -1,63 +1,70 @@
 # Beatriz Tomei Rizzo
-**Desenvolvedora de Software | Engenharia de Dados**  
-**Python • SQL • C# • FastAPI • PostgreSQL**  
+**Desenvolvedora Full Stack**  
+**React • TypeScript • Go • Vite • C#/.NET • Python • PostgreSQL • Supabase • Deno**  
 beatriztrizzo@gmail.com | (19) 99690-0426 | [linkedin.com/in/beatriz-tomei-rizzo](https://www.linkedin.com/in/beatriz-tomei-rizzo/)  
-GitHub: [github.com/RizzoBia](https://github.com/RizzoBia) | Portfólio: [seudominio.com](https://seudominio.com)  
+GitHub: [github.com/RizzoBia](https://github.com/RizzoBia) | Portfólio: [beatriz-rizzo.vercel.app](https://beatriz-rizzo.vercel.app/)  
 São João da Boa Vista, SP  
 
 ---
 
 ## Perfil Profissional
-Desenvolvedora de Software com experiência em desenvolvimento de APIs, integração de sistemas, automação de processos e engenharia de dados. Atuação em construção de pipelines ETL, modelagem de bancos de dados e desenvolvimento de soluções orientadas a dados utilizando Python, SQL, C# e FastAPI.
-
----
-
-## Projetos
-
-### **DEDO DURO 2.0 – Plataforma de Sellout Multicanal**
-*Tecnologias: Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex*  
-Plataforma de inteligência comercial responsável pela consolidação, normalização e análise de dados de vendas, estoque e reposição de marketplaces como Mercado Livre, Amazon, Shopee e Magalu.
-
-**Resultados:**
-* Consolidação de mais de **100.000 registros históricos**.
-* Normalização de mais de **15.000 SKUs/produtos**.
-* Automatização do acompanhamento de vendas, estoque e reposição.
-* Centralização de dados de múltiplos marketplaces.
+Desenvolvedora Full Stack com atuação prática no desenvolvimento e evolução de sistemas web, plataformas voltadas à gestão de marketplaces e sistemas corporativos/tributários (NFSe). Experiência na construção de interfaces modernas com React, TypeScript e Vite, desenvolvimento de APIs e regras de negócio com Go, C# (.NET Core / ASP.NET Core), Python e Deno, e gerenciamento de bancos de dados em PostgreSQL, Supabase e SQL Server. Atuação focada em automação, performance, segurança, conciliação financeira/operacional e confiabilidade das informações.
 
 ---
 
 ## Experiência Profissional
 
-### **Grupo Sandrini** | São João da Boa Vista, SP  
-*Desenvolvedora de Software / Engenharia de Dados* (02/2026 - Atual)  
-* **APIs & ETL**: Construção de pipelines com Python (Pandas/FastAPI) e PostgreSQL (Supabase).
-* **Integração & Parser**: Conexão com APIs de marketplaces (Mercado Livre) e normalização de SKUs via Regex.
-* **Modelagem de Dados**: Arquitetura Medalhão (Bronze/Silver), views e índices para otimização de consultas.
-* **Dashboards**: Desenvolvimento em React e Streamlit para visualização de sellout e faturamento.
+### **Alcavie Systems** | São João da Boa Vista, SP · Presencial  
+*Desenvolvedora Full Stack · Tempo integral* (09/2026 – O momento)  
+* Atuo como Programadora Júnior no desenvolvimento e evolução de sistemas voltados à gestão de marketplaces, integrando APIs, dados e regras de negócio.
+* Trabalho com **React, TypeScript, Go, Vite, PostgreSQL, Supabase e Deno**, desenvolvendo funcionalidades e integrações com **Mercado Livre, TikTok e Amazon**, além de soluções para gestão de pedidos, faturamento, precificação e processos fiscais.
+* Também atuo na análise e conciliação de dados financeiros e operacionais, com foco em automação, performance, segurança e confiabilidade das informações.
 
-### **Simpliss Sistemas de Informação** | São João da Boa Vista, SP  
-*Desenvolvedora Full Stack* (02/2025 - 02/2026)  
-* **Desenvolvimento C#**: APIs REST corporativas usando .NET Core e ASP.NET Core.
-* **Banco de Dados & Segurança**: Integrações com SQL Server/PostgreSQL e segurança a nível de linha (RLS).
-* **Sustentação**: Depuração de logs e refatoração de código legado para melhoria de estabilidade.
-* **Metodologia**: Gestão e priorização de tarefas em fluxo de trabalho Kanban.
+### **Grupo Sandrini** | São João da Boa Vista, SP · Presencial  
+*Analista de Dados & Desenvolvedora Full Stack · Tempo integral* (02/2026 – 09/2026 · 8 meses)  
+* Atuação no desenvolvimento e evolução de sistemas voltados à gestão de marketplaces, integrando APIs, dados e regras de negócio.
+* Desenvolvimento de funcionalidades e integrações com Mercado Livre, TikTok e Amazon (gestão de pedidos, faturamento, precificação e processos fiscais) utilizando **React, TypeScript, Go, Python (FastAPI), Vite, PostgreSQL, Supabase e Deno**.
+* Análise e conciliação de dados financeiros e operacionais, com foco em automação, performance, segurança e confiabilidade das informações.
 
-### **HubControl** | São João da Boa Vista, SP  
-*Desenvolvedora Full Stack (Freelance)* (09/2024 - 12/2024)  
-* **Web Frontend/Backend**: Desenvolvimento de páginas responsivas em PHP, JavaScript, Bootstrap e jQuery.
-* **Persistência**: Manipulação e consultas em bancos relacionais e não-relacionais (MySQL e MongoDB).
+### **Simpliss Sistemas de Informação** | São João da Boa Vista, SP · Presencial  
+*Desenvolvedora Full Stack · Estágio* (01/2025 – 02/2026 · 1 ano e 2 meses)  
+* Suporte técnico e resolução de chamados (incidentes, requisições e melhorias).
+* Desenvolvimento e manutenção de sistemas web com **C#, .NET Core, ASP.NET Core (MVC/Web Forms), SQL Server, PostgreSQL, JavaScript e Bootstrap**.
+* Atuação em sistemas de gestão tributária municipal, com foco em **NFSe (padrão SIMPLISS)**.
+* Gerenciamento de backlog técnico e funcional com uso de Kanban.
+* Responsável pelo desenvolvimento, manutenção e administração completa da infraestrutura de **Power BI** na empresa:
+  * Modelagem de dados (Power Query, DAX) e integração com múltiplas fontes (bancos relacionais e arquivos externos);
+  * Criação de dashboards e relatórios dinâmicos voltados a áreas técnicas, operacionais e estratégicas;
+  * Automatização de atualizações no servidor e agendamentos de datasets;
+  * Gestão e publicação de workspaces, permissões e governança de dados;
+  * Apoio à tomada de decisão com entrega de indicadores customizados e insights visuais.
+* Implementação de melhorias técnicas e funcionais em sistemas legados, refatoração de código, análise de performance e resolução de bugs.
 
-### **Relume Iluminação** | São João da Boa Vista, SP  
-*Auxiliar Administrativo (Foco em Dados)* (07/2023 - 09/2024)  
-* **BI & Analytics**: Relatórios de faturamento e dashboards comerciais com Power BI e Excel.
-* **Auditoria de Estoque**: Conciliação de inventário físico e digital em sistemas ERP.
+### **HubControl** | São João da Boa Vista, SP · Remoto  
+*Desenvolvedora Web · Freelance* (09/2024 – 12/2024 · 4 meses)  
+* Criação de funcionalidades com **PHP, HTML, CSS e JavaScript**.
+* Implementação de layouts com **Bootstrap e jQuery**.
+* Manipulação de dados em **MySQL e MongoDB**.
+
+---
+
+## Projetos em Destaque
+
+### **Sistema Dedo Duro – Plataforma Full Stack de Marketplaces & Estoque**
+*Tecnologias: React • TypeScript • Python • FastAPI • PostgreSQL • Supabase • APIs REST*  
+Plataforma web Full Stack responsável pela gestão, consolidação, normalização e conciliação de vendas, estoque e reposição de marketplaces como Mercado Livre, Amazon, Shopee e Magalu.
+
+**Resultados:**
+* Consolidação de mais de **100.000 registros históricos**.
+* Normalização e gestão de mais de **15.000 SKUs/produtos**.
+* Automatização do acompanhamento de pedidos, faturamento, estoque e reposição.
 
 ---
 
 ## Educação
 
 * **Universidade Anhembi Morumbi** | São Paulo, SP (Remoto)  
-  *Graduação em Análise e Desenvolvimento de Sistemas* (02/2024 - 07/2026)
+  *Graduação em Análise e Desenvolvimento de Sistemas* (02/2024 – 07/2026)
 
 ---
 
@@ -65,8 +72,8 @@ Plataforma de inteligência comercial responsável pela consolidação, normaliz
 
 * **Engenharia de Prompt para Eng. de Software** – USP ESALQ (2026)
 * **Introdução ao Machine Learning com Python** – USP ESALQ (2026)
-* **Python AI Backend Developer** – DIO e Vivo
-* **Santander Bootcamp 2024: Trilha AWS** – DIO e Santander
+* **Python AI Backend Developer** – DIO / Vivo
+* **Bootcamp 2024: Trilha AWS** – DIO / Santander
 * **AWS Academy Cloud Foundation** – AWS
 * **Analista de Dados no Power BI** – Datacamp
 
@@ -74,12 +81,12 @@ Plataforma de inteligência comercial responsável pela consolidação, normaliz
 
 ## Competências
 
-* **Linguagens**: Python, SQL, C#, JavaScript
-* **Banco de Dados**: PostgreSQL, SQL Server, MySQL, Supabase
-* **Engenharia de Dados**: ETL / ELT, FastAPI, Pandas, APIs REST, Integração de Sistemas, Modelagem de Dados, Regex
-* **Desenvolvimento**: Git, GitHub, Docker, React
-* **Metodologias**: Kanban, Metodologias Ágeis
-* **Tecnologias Complementares**: PHP, MongoDB, Bootstrap, Tailwind, DAX, Power Query
+* **Front-end**: React, TypeScript, Vite, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Bootstrap, jQuery
+* **Back-end & Runtimes**: Go (Golang), C#, .NET Core, ASP.NET Core (MVC/Web Forms), Deno, Python (FastAPI), Node.js, PHP
+* **Banco de Dados & BaaS**: PostgreSQL, Supabase, SQL Server, MySQL, MongoDB
+* **Marketplaces & Negócio**: Integrações (Mercado Livre, TikTok, Amazon), Gestão de Pedidos, Faturamento, Precificação, Processos Fiscais, NFSe (Padrão SIMPLISS), Conciliação Financeira/Operacional
+* **Dados, BI & Governança**: Power BI, DAX, Power Query, Pandas, ETL, Governança de Workspaces e Datasets
+* **Engenharia & Ágil**: Git, GitHub, Kanban, Scrum, Refatoração de Legado, Otimização de Performance
 
 ---
 

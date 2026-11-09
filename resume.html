@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beatriz Tomei Rizzo - Resume</title>
+  <title>Beatriz Tomei Rizzo - Currículo</title>
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0f172a;
-      --secondary-color: #475569;
-      --accent-color: #2563eb;
-      --text-color: #334155;
-      --border-color: #e2e8f0;
-      --sidebar-bg: #f8fafc;
-      --badge-bg: #f1f5f9;
-      --badge-text: #334155;
+      --primary-color: #0f172a; /* Slate 900 */
+      --secondary-color: #475569; /* Slate 600 */
+      --accent-color: #2563eb; /* Blue 600 */
+      --text-color: #334155; /* Slate 700 */
+      --border-color: #e2e8f0; /* Slate 200 */
+      --sidebar-bg: #f8fafc; /* Slate 50 */
+      --badge-bg: #f1f5f9; /* Slate 100 */
+      --badge-text: #334155; /* Slate 700 */
 
       --spacing-sm: 6px;
-      --spacing-md: 12px;
-      --spacing-lg: 20px;
+      --spacing-md: 11px;
+      --spacing-lg: 18px;
     }
 
     * {
@@ -37,15 +37,16 @@
       color: var(--text-color);
       line-height: 1.4;
       -webkit-font-smoothing: antialiased;
-      padding: 40px 0;
+      padding: 30px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 25px;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
+    /* Floating Editor Banner */
     .edit-banner {
       background-color: #f0fdf4;
       border: 1px solid #bbf7d0;
@@ -80,51 +81,55 @@
     .resume-pages-container {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 25px;
       outline: none;
     }
 
+    /* Page Setup */
     .page {
       background-color: #ffffff;
       width: 210mm;
       height: 297mm;
-      padding: 15mm 15mm;
+      padding: 13mm 14mm;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
       position: relative;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 24px;
+      grid-template-columns: 205px 1fr;
+      gap: 22px;
       overflow: hidden;
     }
 
+    /* Left Sidebar */
     .sidebar {
       border-right: 1px solid var(--border-color);
-      padding-right: 20px;
+      padding-right: 18px;
       display: flex;
       flex-direction: column;
       gap: var(--spacing-lg);
     }
 
+    /* Right Column */
     .main-content {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-lg);
     }
 
+    /* Header spans both columns on Page 1 */
     header {
       grid-column: 1 / -1;
       border-bottom: 2px solid var(--primary-color);
       padding-bottom: var(--spacing-md);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
 
     .header-left h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--primary-color);
       letter-spacing: -0.5px;
@@ -133,7 +138,7 @@
     }
 
     .header-left .subtitle {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
       color: var(--accent-color);
       text-transform: uppercase;
@@ -142,18 +147,18 @@
     }
 
     .header-left .sub-headline {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--secondary-color);
       letter-spacing: 0.5px;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      font-size: 12px;
+      gap: 4px;
+      font-size: 11.5px;
       color: var(--secondary-color);
       align-items: flex-end;
       text-align: right;
@@ -168,8 +173,8 @@
     }
 
     .contact-item svg {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       fill: var(--secondary-color);
     }
 
@@ -183,55 +188,58 @@
       color: var(--accent-color);
     }
 
+    /* Section Styling */
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-color);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       border-bottom: 1.5px solid var(--primary-color);
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       margin-bottom: var(--spacing-md);
     }
 
     .sidebar .section-title {
       border-bottom: 1.5px solid var(--border-color);
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       margin-bottom: var(--spacing-md);
     }
 
+    /* Profile text */
     .profile-text {
-      font-size: 12.5px;
+      font-size: 11.8px;
       color: var(--text-color);
       text-align: justify;
       line-height: 1.5;
     }
 
+    /* Experience */
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 15px;
     }
 
     .experience-item {
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .experience-header {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .role-company {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-color);
     }
 
     .role-company span {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--accent-color);
     }
 
@@ -247,40 +255,42 @@
     }
 
     .experience-bullets li {
-      font-size: 12px;
+      font-size: 11.5px;
       position: relative;
       padding-left: 12px;
-      margin-bottom: 5px;
+      margin-bottom: 4.5px;
       color: var(--text-color);
       text-align: justify;
+      line-height: 1.45;
     }
 
     .experience-bullets li::before {
-      content: "▪";
+      content: "•";
       color: var(--accent-color);
-      font-size: 9px;
+      font-size: 10px;
       position: absolute;
       left: 0;
-      top: 0.5px;
+      top: 0px;
     }
 
     .experience-bullets li strong {
       color: var(--primary-color);
     }
 
+    /* Project styling */
     .project-item {
-      margin-bottom: 12px;
+      margin-bottom: 4px;
     }
 
     .project-header {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .project-title {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary-color);
     }
@@ -292,10 +302,11 @@
     }
 
     .project-desc {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-color);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       text-align: justify;
+      line-height: 1.45;
     }
 
     .project-bullets {
@@ -303,78 +314,82 @@
     }
 
     .project-bullets li {
-      font-size: 12px;
+      font-size: 11.5px;
       position: relative;
       padding-left: 12px;
-      margin-bottom: 4px;
+      margin-bottom: 3.5px;
       color: var(--text-color);
+      line-height: 1.4;
     }
 
     .project-bullets li::before {
-      content: "▪";
+      content: "•";
       color: var(--accent-color);
-      font-size: 9px;
+      font-size: 10px;
       position: absolute;
       left: 0;
-      top: 0.5px;
+      top: 0px;
     }
 
+    /* Education */
     .education-item {
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     .education-title {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--primary-color);
       line-height: 1.3;
     }
 
     .education-subtitle {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--secondary-color);
       font-weight: 500;
       margin-top: 2px;
     }
 
     .education-date {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--secondary-color);
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
+    /* Certifications */
     .cert-list {
       list-style-type: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .cert-list li {
-      font-size: 12px;
+      font-size: 11.2px;
       position: relative;
-      padding-left: 12px;
-      line-height: 1.3;
+      padding-left: 11px;
+      line-height: 1.35;
     }
 
     .cert-list li::before {
-      content: "▪";
+      content: "•";
       color: var(--accent-color);
-      font-size: 8px;
+      font-size: 9px;
       position: absolute;
       left: 0;
-      top: 2px;
+      top: 1px;
     }
 
+    /* Skills block */
     .skills-category {
-      margin-bottom: 14px;
+      margin-bottom: 11px;
     }
 
     .skills-category-title {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--primary-color);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -382,27 +397,28 @@
     .skills-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
+      gap: 4px;
     }
 
     .skill-tag {
-      font-size: 10.5px;
+      font-size: 10px;
       background-color: var(--badge-bg);
       color: var(--badge-text);
-      padding: 3px 6px;
+      padding: 2.5px 6px;
       border-radius: 4px;
       font-weight: 500;
       border: 1px solid var(--border-color);
     }
 
+    /* Languages */
     .languages-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .language-item {
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
     .language-item strong {
@@ -414,6 +430,7 @@
       color: var(--secondary-color);
     }
 
+    /* Print Optimization styles */
     @media print {
       body {
         background-color: transparent;
@@ -450,24 +467,26 @@
 
 <body>
 
+  <!-- Floating Editor Banner -->
   <div class="edit-banner">
-    <span>✍️ <strong>Edit Mode Active:</strong> Feel free to adjust the text and save!</span>
-    <button onclick="window.print()">Save as PDF (Ctrl + P)</button>
+    <span>💡 <strong>Modo de Edição Ativo:</strong> Sinta-se livre para ajustar o texto e depois salvar!</span>
+    <button onclick="window.print()">Salvar como PDF (Ctrl + P)</button>
   </div>
 
   <div class="resume-pages-container" contenteditable="true" spellcheck="false">
 
     <!-- PAGE 1 -->
     <div class="page" id="page-1">
+      <!-- Header spans both columns -->
       <header>
         <div class="header-left">
           <h1>Beatriz Tomei Rizzo</h1>
-          <div class="subtitle">Software Developer | Data Engineer</div>
-          <div class="sub-headline">Python • SQL • C# • FastAPI • PostgreSQL</div>
+          <div class="subtitle">Desenvolvedora Full Stack</div>
+          <div class="sub-headline">React • TypeScript • Go • Vite • C#/.NET • Python • PostgreSQL • Supabase • Deno</div>
         </div>
         <div class="contact-info">
           <div class="contact-item">
-            <span>São João da Boa Vista, SP, Brazil</span>
+            <span>São João da Boa Vista, SP</span>
             <svg viewBox="0 0 24 24">
               <path
                 d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -481,7 +500,7 @@
             </svg>
           </div>
           <div class="contact-item">
-            <span>+55 (19) 99690-0426</span>
+            <span>(19) 99690-0426</span>
             <svg viewBox="0 0 24 24">
               <path
                 d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
@@ -495,6 +514,7 @@
                 d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
             </svg>
           </div>
+
           <div class="contact-item">
             <a href="https://beatriz-rizzo.vercel.app/" target="_blank">beatriz-rizzo.vercel.app</a>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
@@ -502,117 +522,123 @@
         </div>
       </header>
 
+      <!-- Sidebar Page 1 -->
       <div class="sidebar">
+        <!-- Competências -->
         <div>
-          <div class="section-title">Skills</div>
+          <div class="section-title">Competências</div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Languages</div>
+            <div class="skills-category-title">Front-end</div>
             <div class="skills-tags">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">C#</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Vite</span>
               <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML5 / CSS3</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">jQuery</span>
             </div>
           </div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Databases</div>
+            <div class="skills-category-title">Back-end & APIs</div>
+            <div class="skills-tags">
+              <span class="skill-tag">Go (Golang)</span>
+              <span class="skill-tag">C# / .NET Core</span>
+              <span class="skill-tag">ASP.NET Core (MVC/Web Forms)</span>
+              <span class="skill-tag">Deno</span>
+              <span class="skill-tag">Python / FastAPI</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">APIs REST</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <div class="skills-category-title">Banco de Dados & BaaS</div>
             <div class="skills-tags">
               <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Supabase</span>
               <span class="skill-tag">SQL Server</span>
               <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">Supabase</span>
+              <span class="skill-tag">MongoDB</span>
             </div>
           </div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Data Engineering</div>
+            <div class="skills-category-title">Marketplaces & Fiscais</div>
             <div class="skills-tags">
-              <span class="skill-tag">ETL / ELT</span>
-              <span class="skill-tag">FastAPI</span>
-              <span class="skill-tag">Pandas</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">Systems Integration</span>
-              <span class="skill-tag">Data Modeling</span>
-              <span class="skill-tag">Regex</span>
+              <span class="skill-tag">Mercado Livre / TikTok / Amazon</span>
+              <span class="skill-tag">Pedidos & Faturamento</span>
+              <span class="skill-tag">Precificação & Fiscal</span>
+              <span class="skill-tag">NFSe (SIMPLISS)</span>
+              <span class="skill-tag">Conciliação Financeira</span>
             </div>
           </div>
 
           <div class="skills-category">
-            <div class="skills-category-title">Development</div>
+            <div class="skills-category-title">BI, Dados & DevOps</div>
             <div class="skills-tags">
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">GitHub</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">React</span>
-            </div>
-          </div>
-
-          <div class="skills-category">
-            <div class="skills-category-title">Methodologies</div>
-            <div class="skills-tags">
+              <span class="skill-tag">Power BI (DAX / Power Query)</span>
+              <span class="skill-tag">Git & GitHub</span>
               <span class="skill-tag">Kanban</span>
-              <span class="skill-tag">Agile Methodologies</span>
+              <span class="skill-tag">Automação</span>
             </div>
           </div>
         </div>
 
+        <!-- Idiomas -->
         <div>
-          <div class="section-title">Languages</div>
+          <div class="section-title">Idiomas</div>
           <div class="languages-list">
-            <div class="language-item"><strong>English</strong> <span>– Fluent/Native</span></div>
-            <div class="language-item"><strong>Spanish</strong> <span>– Advanced</span></div>
-            <div class="language-item"><strong>German</strong> <span>– Basic</span></div>
+            <div class="language-item"><strong>Inglês</strong> <span>– Avançado</span></div>
+            <div class="language-item"><strong>Espanhol</strong> <span>– Intermediário</span></div>
           </div>
         </div>
       </div>
 
+      <!-- Main Column Page 1 -->
       <div class="main-content">
+        <!-- Perfil Profissional -->
         <section>
-          <div class="section-title">Professional Profile</div>
+          <div class="section-title">Perfil Profissional</div>
           <p class="profile-text">
-            Software Developer and Data Engineer with a strong background in backend development, process automation, and business intelligence. Experienced in building and orchestrating data pipelines (ETL), relational database modeling (PostgreSQL, SQL Server), and developing high-performance REST APIs using Python (FastAPI) and C# (.NET Core). Focused on delivering scalable, data-driven solutions.
+            Desenvolvedora Full Stack com atuação no desenvolvimento e evolução de sistemas web, plataformas voltadas à gestão de marketplaces e sistemas corporativos/tributários (NFSe). Experiência prática com React, TypeScript, Go, Vite, C# (.NET Core / ASP.NET Core), Python, Deno, PostgreSQL, Supabase e SQL Server, desenvolvendo integrações com Mercado Livre, TikTok e Amazon, soluções para pedidos, faturamento, precificação, processos fiscais e conciliação de dados financeiros e operacionais com foco em automação, performance e segurança.
           </p>
         </section>
 
+        <!-- Experiência Page 1 -->
         <section>
-          <div class="section-title">Projects</div>
-          <div class="project-item">
-            <div class="project-header">
-              <div class="project-title">DEDO DURO 2.0 – Multichannel Sellout Platform</div>
-              <div class="project-tech">Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex</div>
-            </div>
-            <p class="project-desc">
-              A commercial intelligence platform responsible for consolidating, normalizing, and analyzing sales, inventory, and restocking data from marketplaces such as Mercado Livre, Amazon, Shopee, and Magalu.
-            </p>
-            <div style="font-size: 12px; font-weight: 700; color: var(--primary-color); margin-top: 6px; margin-bottom: 4px;">
-              Results:</div>
-            <ul class="project-bullets">
-              <li>Consolidated over <strong>100,000 historical records</strong>.</li>
-              <li>Normalized over <strong>15,000 SKUs/products</strong>.</li>
-              <li>Automated the tracking of sales, inventory, and restocking.</li>
-              <li>Centralized data from multiple marketplaces into a single source of truth.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section>
-          <div class="section-title">Professional Experience</div>
+          <div class="section-title">Experiência Profissional</div>
           <div class="experience-list">
+
+            <!-- Alcavie Systems -->
             <div class="experience-item">
               <div class="experience-header">
-                <div class="role-company">Data Engineer <span>| Grupo Sandrini</span></div>
-                <div class="date-location">02/2026 – Present • São João da Boa Vista, SP</div>
+                <div class="role-company">Desenvolvedora Full Stack <span>| Alcavie Systems · Tempo integral</span></div>
+                <div class="date-location">09/2026 – O momento • São João da Boa Vista, SP (Presencial)</div>
               </div>
               <ul class="experience-bullets">
-                <li><strong>System Architecture:</strong> Designed and developed a full-stack intelligent system for automated inventory management and reconciliation, utilizing Node.js, React, and Supabase.</li>
-                <li><strong>Data Pipelines (ETL):</strong> Developed and orchestrated automated daily routines using Python and Pandas to extract, clean, and process cloud sales spreadsheets.</li>
-                <li><strong>APIs & Integration:</strong> Created high-performance REST APIs with Python (FastAPI) to consume, normalize, and integrate multiple external data sources and legacy systems.</li>
-                <li><strong>Data Modeling:</strong> Structured the analytical data repository applying the Medallion Architecture (Staging, Silver, Gold) in a PostgreSQL database.</li>
-                <li><strong>Data Visualization:</strong> Developed interactive dashboards in Power BI and Streamlit for real-time monitoring of critical business KPIs, such as sellout and sales coverage.</li>
+                <li>Atuo como Programadora Júnior no desenvolvimento e evolução de sistemas voltados à gestão de marketplaces, integrando APIs, dados e regras de negócio.</li>
+                <li>Trabalho com <strong>React, TypeScript, Go, Vite, PostgreSQL, Supabase e Deno</strong>, desenvolvendo funcionalidades e integrações com <strong>Mercado Livre, TikTok e Amazon</strong>, além de soluções para gestão de pedidos, faturamento, precificação e processos fiscais.</li>
+                <li>Atuação na análise e conciliação de dados financeiros e operacionais, com foco em automação, performance, segurança e confiabilidade das informações.</li>
               </ul>
             </div>
+
+            <!-- Grupo Sandrini -->
+            <div class="experience-item">
+              <div class="experience-header">
+                <div class="role-company">Analista de Dados & Desenvolvedora Full Stack <span>| Grupo Sandrini · Tempo integral</span></div>
+                <div class="date-location">02/2026 – 09/2026 (8 meses) • São João da Boa Vista, SP (Presencial)</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Desenvolvimento e evolução de sistemas voltados à gestão de marketplaces, integrando APIs, dados e regras de negócio.</li>
+                <li>Desenvolvimento de funcionalidades e integrações com <strong>Mercado Livre, TikTok e Amazon</strong> (gestão de pedidos, faturamento, precificação e processos fiscais) utilizando <strong>React, TypeScript, Go, Python (FastAPI), Vite, PostgreSQL, Supabase e Deno</strong>.</li>
+                <li>Análise e conciliação de dados financeiros e operacionais, com foco em automação, performance, segurança e confiabilidade das informações.</li>
+              </ul>
+            </div>
+
           </div>
         </section>
       </div>
@@ -620,86 +646,115 @@
 
     <!-- PAGE 2 -->
     <div class="page" id="page-2">
+      <!-- Sidebar Page 2 -->
       <div class="sidebar">
+        <!-- Educação -->
         <div>
-          <div class="section-title">Education</div>
+          <div class="section-title">Educação</div>
           <div class="education-item">
-            <div class="education-title">Degree in Systems Analysis and Development</div>
+            <div class="education-title">Graduação em Análise e Desenvolvimento de Sistemas</div>
             <div class="education-subtitle">Universidade Anhembi Morumbi</div>
-            <div class="education-date">02/2024 – 07/2026 • São Paulo, SP (Remote)</div>
+            <div class="education-date">02/2024 – 07/2026 • São Paulo, SP (Remoto)</div>
           </div>
         </div>
 
+        <!-- Certificações -->
         <div>
-          <div class="section-title">Certifications & Courses</div>
+          <div class="section-title">Certificações e Cursos</div>
           <ul class="cert-list">
-            <li>Prompt Engineering for Software Eng. – USP ESALQ (2026)</li>
-            <li>Introduction to Machine Learning with Python – USP ESALQ (2026)</li>
+            <li>Engenharia de Prompt para Eng. de Software – USP ESALQ (2026)</li>
+            <li>Introdução ao Machine Learning com Python – USP ESALQ (2026)</li>
             <li>Python AI Backend Developer – DIO / Vivo</li>
-            <li>Bootcamp 2024: AWS Trail – DIO / Santander</li>
+            <li>Bootcamp 2024: Trilha AWS – DIO / Santander</li>
             <li>AWS Academy Cloud Foundation – AWS</li>
-            <li>Data Analyst in Power BI – Datacamp</li>
+            <li>Analista de Dados no Power BI – Datacamp</li>
           </ul>
         </div>
 
+        <!-- Metodologias & Práticas -->
         <div>
-          <div class="section-title">Additional Technologies</div>
+          <div class="section-title">Metodologias & Práticas</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Scrum</span>
+            <span class="skill-tag">Kanban</span>
+            <span class="skill-tag">Metodologias Ágeis</span>
+            <span class="skill-tag">Clean Code</span>
+            <span class="skill-tag">CI/CD</span>
+          </div>
+        </div>
+
+        <!-- Conhecimentos Complementares -->
+        <div>
+          <div class="section-title">Tecnologias Complementares</div>
           <div class="skills-tags">
             <span class="skill-tag">PHP</span>
-            <span class="skill-tag">MongoDB</span>
             <span class="skill-tag">Bootstrap</span>
-            <span class="skill-tag">Tailwind</span>
+            <span class="skill-tag">jQuery</span>
             <span class="skill-tag">DAX</span>
             <span class="skill-tag">Power Query</span>
           </div>
         </div>
       </div>
 
+      <!-- Main Column Page 2 -->
       <div class="main-content">
+
+        <!-- Projetos em Destaque -->
         <section>
-          <div class="section-title">Professional Experience (Cont.)</div>
+          <div class="section-title">Projetos em Destaque</div>
+          <div class="project-item">
+            <div class="project-header">
+              <div class="project-title">DEDO DURO 2.0 – Plataforma de Sellout Multicanal</div>
+              <div class="project-tech">Python • FastAPI • PostgreSQL • SQL • React • Pandas • ETL • Regex</div>
+            </div>
+            <p class="project-desc">
+              Plataforma de inteligência comercial responsável pela consolidação, normalização e análise de dados de vendas, estoque e reposição de marketplaces como Mercado Livre, Amazon, Shopee e Magalu.
+            </p>
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--primary-color); margin-top: 4px; margin-bottom: 3px;">
+              Resultados:
+            </div>
+            <ul class="project-bullets">
+              <li>Consolidação de mais de <strong>100.000 registros históricos</strong> de vendas e estoques.</li>
+              <li>Normalização e parsing inteligente de mais de <strong>15.000 SKUs/produtos</strong>.</li>
+              <li>Automatização do acompanhamento diário de estoque, sellout e previsão de reposição.</li>
+              <li>Centralização de dados estratégicos de múltiplos marketplaces em base analítica única.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Experiências Restantes -->
+        <section>
+          <div class="section-title">Experiência Profissional (Histórico)</div>
           <div class="experience-list">
 
+            <!-- Experiência 2 -->
             <div class="experience-item">
               <div class="experience-header">
-                <div class="role-company">Full Stack Developer <span>| Simpliss Sistemas de Informação</span></div>
-                <div class="date-location">01/2025 – 02/2026 • São João da Boa Vista, SP</div>
+                <div class="role-company">Desenvolvedora Full Stack <span>| Simpliss Sistemas de Informação · Estágio</span></div>
+                <div class="date-location">01/2025 – 02/2026 (1 ano e 2 meses) • São João da Boa Vista, SP (Presencial)</div>
               </div>
               <ul class="experience-bullets">
-                <li><strong>APIs & Microservices:</strong> Developed, maintained, and refactored high-performance APIs and microservices using C#, .NET Core, and ASP.NET Core.</li>
-                <li><strong>Database Engineering:</strong> Modeled databases and created procedures, functions, and complex queries to process large volumes of data in SQL Server and PostgreSQL.</li>
-                <li><strong>Systems Integration:</strong> Built secure and scalable integrations between legacy systems and new cloud-hosted applications.</li>
-                <li><strong>Business Intelligence:</strong> Developed BI solutions connecting transactional databases to Power BI, utilizing advanced DAX for financial calculations and dataset automation.</li>
+                <li>Desenvolvimento e manutenção de sistemas web com <strong>C#, .NET Core, ASP.NET Core (MVC/Web Forms), SQL Server, PostgreSQL, JavaScript e Bootstrap</strong>, com atuação em sistemas de gestão tributária municipal e <strong>NFSe (padrão SIMPLISS)</strong>.</li>
+                <li>Suporte técnico e resolução de chamados (incidentes, requisições e melhorias), implementação de melhorias em sistemas legados, refatoração de código, análise de performance, resolução de bugs e gerenciamento de backlog com <strong>Kanban</strong>.</li>
+                <li>Responsável pelo desenvolvimento, manutenção e administração completa da infraestrutura de <strong>Power BI</strong> na empresa: modelagem de dados (Power Query, DAX), integração com múltiplas fontes, criação de dashboards estratégicos, automatização de atualizações/datasets e governança de workspaces e permissões.</li>
               </ul>
             </div>
 
+            <!-- Experiência 3 -->
             <div class="experience-item">
               <div class="experience-header">
-                <div class="role-company">Web Developer (Freelance) <span>| HubControl</span></div>
-                <div class="date-location">09/2024 – 12/2024 • São João da Boa Vista, SP</div>
+                <div class="role-company">Desenvolvedora Web <span>| HubControl · Freelance</span></div>
+                <div class="date-location">09/2024 – 12/2024 (4 meses) • São João da Boa Vista, SP (Remoto)</div>
               </div>
               <ul class="experience-bullets">
-                <li><strong>Web Development:</strong> Created and maintained responsive web systems and administrative panels using PHP, JavaScript, HTML5/CSS3, and Bootstrap.</li>
-                <li><strong>System Integration:</strong> Integrated front-end interfaces with business logic and rules on the back-end using PHP.</li>
-                <li><strong>Databases:</strong> Modeled, manipulated, and processed information within relational (MySQL) and non-relational/NoSQL (MongoDB) database architectures.</li>
-              </ul>
-            </div>
-
-            <div class="experience-item">
-              <div class="experience-header">
-                <div class="role-company">Junior Data Analyst <span>| Relume Iluminação</span></div>
-                <div class="date-location">07/2023 – 09/2023 • São João da Boa Vista, SP</div>
-              </div>
-              <ul class="experience-bullets">
-                <li><strong>Data Analysis (BI):</strong> Developed and maintained strategic reports and dashboards in Power BI, providing fundamental data intelligence to support executive decision-making.</li>
-                <li><strong>Process Automation:</strong> Automated financial reports and administrative routines, optimizing internal processes and significantly reducing information delivery time.</li>
-                <li><strong>Web Development:</strong> Created and continuously maintained the company's institutional website, ensuring advanced usability (UX), accessibility, and high availability.</li>
-                <li><strong>IT Support & Infrastructure:</strong> Provided direct technical support, configuring and maintaining hardware and networks to ensure company infrastructure stability.</li>
+                <li>Criação de funcionalidades com <strong>PHP, HTML, CSS e JavaScript</strong> e implementação de layouts com <strong>Bootstrap e jQuery</strong>.</li>
+                <li>Manipulação e manutenção de dados em bancos relacionais e não-relacionais (<strong>MySQL e MongoDB</strong>).</li>
               </ul>
             </div>
 
           </div>
         </section>
+
       </div>
     </div>
 
